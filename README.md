@@ -25,6 +25,7 @@ Content of the project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
 └── README.md
+└── main.html                # logged in HTML file, this is what users see when they login
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
@@ -44,4 +45,7 @@ Firebase hosting files:
 Tips for file naming files and folders:
 * use lowercase with no spaces
 * use dashes (not underscore) for word separation
+
+## Contributors
+* KevinNha
 
