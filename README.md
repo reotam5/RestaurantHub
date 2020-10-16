@@ -10,6 +10,7 @@ This browser based web application to ...
 ## Contributers
 * Reo Tamai (reotam5)
 * KevinNha
+* s-lando
 	
 ## Technologies
 Technologies used for this project:
