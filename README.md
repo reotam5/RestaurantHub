@@ -25,9 +25,10 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── index.html               # landing HTML file, this is what users see when 
+├── main.html                # logged in HTML file, this is what users see when they login
+├── profile.html             # page for user profile
 └── README.md
-└── main.html                # logged in HTML file, this is what users see when they login
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
