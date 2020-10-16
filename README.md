@@ -6,6 +6,9 @@
 
 ## General Info
 This browser based web application to ...
+
+## Contributers
+Reo Tamai (reotam5)
 	
 ## Technologies
 Technologies used for this project:
