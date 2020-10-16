@@ -6,6 +6,10 @@
 
 ## General Info
 This browser based web application to ...
+
+## Contributers
+* Reo Tamai (reotam5)
+* KevinNha
 	
 ## Technologies
 Technologies used for this project:
@@ -22,6 +26,7 @@ Content of the project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
 └── README.md
+└── main.html                # logged in HTML file, this is what users see when they login
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
