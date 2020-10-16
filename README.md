@@ -8,7 +8,8 @@
 This browser based web application to ...
 
 ## Contributers
-Reo Tamai (reotam5)
+* Reo Tamai (reotam5)
+* KevinNha
 	
 ## Technologies
 Technologies used for this project:
@@ -45,7 +46,4 @@ Firebase hosting files:
 Tips for file naming files and folders:
 * use lowercase with no spaces
 * use dashes (not underscore) for word separation
-
-## Contributors
-* KevinNha
 
