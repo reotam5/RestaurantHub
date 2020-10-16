@@ -34,6 +34,9 @@ It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
     /blah.jpg                # 
+    /picture1.jpg            #
+    /picture2.jpg            #
+    /picture3.jpg            #
 ├── scripts                  # Folder for scripts
     /blah.js                 # 
 ├── styles                   # Folder for styles
