@@ -3,17 +3,20 @@
 /***************************************/
 .restaurantHead{
   position: relative;
+  height: 360px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 .restaurantHead .restaurantImage{
   object-fit: cover;
   width: 100%;
-  height: 400px;
+  height: 300px;
   z-index: -1;
 }
 .restaurantHead .restaurantImageBlur{
   position: absolute;
   width: 100%;
-  height: 400px;
+  height: 300px;
   top: 60px;
   background-color: rgba(0,0,0,.2);
   background-image:
@@ -23,14 +26,52 @@
   background-position: 0 0, 2px 2px;
   z-index: 0;
 }
-
-.restaurantHead .backButton{
+.restaurantHead .restaurantName{
+  margin-left: 3px;
+  font-weight: bold;
+  font-size: 25pt;
+}
+.restaurantHead .restaurantStars img{
   width: 40px;
   height: 40px;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  margin: 10px;
-  background-color: rgba(255, 255, 255, 0.705);
-  border-radius: 50%;
+  margin-right: 2px;
+  margin-left: 2px;
 }
+
+.restaurantHead .restaurantStars{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.restaurantHead .restaurantHeadRight img{
+  width: 35px;
+  height: 35px;
+}
+
+.restaurantHead .restaurantHeadLeft{
+  margin-bottom: 10px;
+}
+
+.restaurantHead .restaurantHeadRight{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  width: 200px;
+}
+.restaurantHead .restaurantHeadInfo{
+  width: 100vw;
+  margin: 0;
+  transform: translateY(-100%);
+}
+
+.nav-tabs .nav-link[aria-selected=true]{
+  color: black !important;
+  font-weight: bold;
+}
+.nav-tabs .nav-link[aria-selected=false]{
+  color: black !important;
+}
+
+

@@ -25,66 +25,150 @@
   <!-- Nav bar starts -->
   <!-------------------->
   <header class="siteNav">
-    <img class="myAccount" src="images/myAccount.png" alt="myAccount"/>
-    <div class="siteInfo">
-      <div class="siteTitle">Restaurant Hub</div>
-      <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
-    </div>
-    <img class="shoppingCart" src="images/shoppingCart.png" alt="shoppingCart"/>
+    <a href="profile.html" id="myAccount">
+      <div type="button" class="myAccountDiv btn-outline-secondary">
+        <img class="myAccount" src="images/myAccount.png" alt="myAccount"/>
+      </div>
+    </a>
+    <a href="index.html" id="siteInfo">
+      <div type="button" class="siteInfo btn-outline-secondary">
+        <div class="siteTitle">Restaurant Hub</div>
+        <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
+      </div>
+    </a>
+    <a href="shoppingCart" id="shoppingCart">
+      <div type="button" class="shoppingCartDiv btn-outline-secondary">
+        <img class="shoppingCart" src="images/shoppingCart.png" alt="shoppingCart"/>
+      </div>
+    </a>
   </header>
   <!------------------>
   <!-- Nav bar ends -->
   <!------------------>
 
-
+  <!---------------------------->
+  <!-- restaurant head starts -->
+  <!---------------------------->
   <div class="restaurantHead">
     <img class="restaurantImage" src="images/restaurant1.jpg" alt="Something Went Wrong...">
     <div class="restaurantImageBlur"></div>
-    <div class="restaurantHeadLeft">
-      <div class="restaurantName">
-        NAME
+    <div class="restaurantHeadInfo row">
+      <div class="restaurantHeadLeft col">
+        <div class="restaurantName">
+          NAME
+        </div>
+        <div class="restaurantStars">
+          <img class="star" id="star1" src="images/star.png">
+          <img class="star" id="star2" src="images/star.png">
+          <img class="star" id="star3" src="images/star.png">
+          <img class="star" id="star4" src="images/star.png">
+          <img class="star" id="star5" src="images/star.png">
+        </div>
       </div>
-      <div class="restaurantStars">
-        <img class="star" id="star1" src="images/star.png">
-        <img class="star" id="star2" src="images/star.png">
-        <img class="star" id="star3" src="images/star.png">
-        <img class="star" id="star4" src="images/star.png">
-        <img class="star" id="star5" src="images/star.png">
+      <div class="restaurantHeadRight col">
+        <img tabindex="0" class="reserveIcon btn-outline-secondary" role="button" src="images/calendar.png" alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Reservation" data-content="This restaurant allowes online reservations.">
+        <img tabindex="0" class="tableTracker btn-outline-secondary" role="button" src="images/tableTracker.png" alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Table Tracker" data-content="This restaurant has real-time table tracker.">
+        <img tabindex="0" class="verifiedHours btn-outline-secondary" role="button" src="images/verifiedHours.png" alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Verified Hours" data-content="This restaurant has verified their operation hours.">
       </div>
     </div>
-    <div class="restaurantHeadRight">
-      <img class="reserveIcon" src="images/calender.png" alt="something went wrong.">
-      <img class="tableTracker" src="images/tableTracker.png" alt="something went wrong.">
-      <img class="verifiedHoursIcon" src="images/verifiedHours.png" alt="something went wrong.">
+  </div>
+  <!-------------------------->
+  <!-- restaurant head ends -->
+  <!-------------------------->
+
+  <!---------------->
+  <!-- tab starts -->
+  <!---------------->
+  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="home" aria-selected="true">Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="profile" aria-selected="false">Menu</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="reserve-tab" data-toggle="tab" href="#reserve" role="tab" aria-controls="contact" aria-selected="false">Reserve</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+      <!--------------------------------->
+      <!-- Overview tab content starts -->
+      <!--------------------------------->
+      This is overview.
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      A long paragraph.
+
+      <!------------------------------->
+      <!-- Overview tab content ends -->
+      <!------------------------------->
+    </div>
+    <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+      <!----------------------------->
+      <!-- Menu tab content starts -->
+      <!----------------------------->
+
+      This is menu.
+
+      <!--------------------------->
+      <!-- Menu tab content ends -->
+      <!--------------------------->
+    </div>
+    <div class="tab-pane fade" id="reserve" role="tabpanel" aria-labelledby="reserve-tab">
+      <!------------------------------->
+      <!-- Reserve tab content start -->
+      <!------------------------------->
+
+      This is reserve.
+
+      <!------------------------------>
+      <!-- Reserve tab content ends -->
+      <!------------------------------>
+
     </div>
   </div>
-
-  <!-- icon reference -->
-  <div class="iconRef">
-    <p>
-      Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-      Icons made by <a href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-      Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-      Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-      Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-      Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-    </p>
-  </div>
-
+  <!-------------->
+  <!-- tab ends -->
+  <!-------------->
 
   <!------------------->
   <!-- footer starts -->
   <!------------------->
   <div class="siteFooter">
-    <div class="footerHome">
-      <img class="footerHomeIcon footerIcon" src="images/home.png" alt="footerHomeIcon"/>
-    </div>
-    <div class="footerMap">
-      <img class="footerMap footerIcon" src="images/map.png" alt="footerMap"/>
-    </div>
-    <div class="footerFavorite">
-      <img class="footerFavorite footerIcon" src="images/favorite.png" alt="footerFavorite"/>
-    </div>
+    <a href="restaurant.html" type="button" class="btn-outline-secondary">
+      <div class="footerHome">
+        <img class="footerHomeIcon footerIcon" src="images/home.png" alt="footerHomeIcon"/>
+      </div>
+    </a>
+    <a href="map.html" type="button" class="btn-outline-secondary">
+      <div class="footerMap">
+        <img class="footerMap footerIcon" src="images/map.png" alt="footerMap"/>
+      </div>
+    </a>
+    <a href="favorite.html" type="button" class="btn-outline-secondary">
+      <div class="footerFavorite">
+        <img class="footerFavorite footerIcon" src="images/favorite.png" alt="footerFavorite"/>
+      </div>
+    </a>
   </div>
   <!----------------->
   <!-- footer ends -->
@@ -93,6 +177,7 @@
 
   <!-- homemade script -->
   <script src="scripts/universal.js"></script>
+  <script src="scripts/restaurant.js"></script>
 
   <!-- Boostrap -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
