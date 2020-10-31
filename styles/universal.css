@@ -73,12 +73,13 @@ body{
 }
 
 .siteFooter > div{
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  height: 100%;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .siteFooter .footerIcon{
