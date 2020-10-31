@@ -20,8 +20,8 @@
   top: 60px;
   background-color: rgba(0,0,0,.2);
   background-image:
-  radial-gradient(white 35%, transparent 36%),
-  radial-gradient(white 35%, transparent 36%);
+  radial-gradient(white 20%, transparent 36%),
+  radial-gradient(white 20%, transparent 36%);
   background-size: 4px 4px;
   background-position: 0 0, 2px 2px;
   z-index: 0;
