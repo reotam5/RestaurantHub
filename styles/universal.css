@@ -2,69 +2,71 @@
 /* This is for styling that is universal to most of the pages(EX. nav bar) */
 /***************************************************************************/
 
-/**********************/
-/* nav bar css starts */
-/**********************/
-.siteNav{
+/*********************/
+/* header css starts */
+/*********************/
+.siteHead{
   display: flex;
   position: fixed;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   transition: 0.5s;
   width: 100%;
   height: 60px;
-  background-color: rgb(119, 119, 119);
-  z-index: 5;
+  background-color: white;
+  border-bottom: black 2px solid;
+  z-index: 4;
 }
-.siteNav a[id="myAccount"]{
-  margin-left: 20px;
-  width: 50px;
+.siteHead a[class="btn-slide"]{
+  margin-left: 0px;
+  width: 40px;
   height: 100%;
 }
-.siteNav a[id="shoppingCart"]{
+.siteHead a[class="shoppingCart"]{
   margin-right: 20px;
   width: 50px;
   height: 100%;
+  position: absolute;
+  right: 0;
 }
-.siteNav a[id="SiteInfo"]{
+.siteHead a[class="SiteInfo"]{
   height: 100%;
 }
 
 .transform{
   height: 40px;
-  background-color: rgba(119, 119, 119,0.3);
+  background-color: white
 }
 
 .transform-test{
   padding: 4px 8px 4px 8px !important;
 }
-.navbar{
-  transition: 0.5s;
+
+.siteHead img {
+  width: 25px;
+  height: 25px;
 }
 
-.siteNav img {
-  width: 30px;
-  height: 30px;
-}
-
-.siteNav .siteInfo{
+.siteHead .siteInfo{
   display: flex;
+  margin-left: 10px;
+  align-items: center;
   color: black;
 }
 
-.siteNav .siteInfo .siteTitle{
+.siteHead .siteInfo .siteTitle{
   margin-right: 10px;
   font-weight: bold;
   font-size: 20px;
 }
-.siteNav .myAccountDiv{
+.siteHead div.btn-slide{
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
 }
-.siteNav .shoppingCartDiv{
+.siteHead .shoppingCartDiv{
   height: 100%;
   display: flex;
   justify-content: center;
@@ -80,57 +82,105 @@
 .adoptNav{
   padding-top: 60px;
 }
-/********************/
-/* nav bar css ends */
-/********************/
+/***********************/
+/* header bar css ends */
+/***********************/
 
 
+/************************/
+/* slide bar css starts */
+/************************/
+div.slidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100%;
+	background-color: rgb(53, 53, 53);
+	transition: 0.2s;
+	transform: translate(-300px);
+	z-index: 5;
+}
+div.openNav {
+	transform: translate(0); 
+}
 
-/*********************/
-/* footer css starts */
-/*********************/
-.siteFooter{
+.slideHeader{
+  height: 50px;
+  margin: 10px;
   display: flex;
+  align-items: center;
+  border-bottom:white 2px solid;
+}
+
+.slideHeader > .siteInfo{
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.slideHeader > .siteInfo > .siteTitle{
+  color: white;
+  font-size: 15pt;
+}
+
+.slideHeader > .siteInfo > .siteLogo{
+  filter: invert(1);
+}
+
+.slideHeader img{
+  width: 20px;
+  height: 20px;
+} 
+
+.slidebar .slideContent{
+  color: white;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateY(80px);
+}
+
+.slidebar .slideContent ul{
+  list-style-type: none;
+  font-size: 15pt;
+}
+.slidebar .slideContent ul li{
+  margin: 20px;
+}
+.slidebar .slideContent ul a{
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+.slidebar .slideContent ul a img{
+  width: 20px;
+  height: 20px;
+}
+
+.slideFooter{
   position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.5s;
-  width: 100%;
-  height: 60px;
-  bottom: 0;
-  background-color: rgb(119, 119, 119);
-  overflow: hidden;
+  margin-bottom: 10px;
 }
-.siteFooter a{
+
+.slideFooter .slideFooterItems{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  margin-left: 30px;
-  margin-right: 30px;
-  width: 100px;
+  color: white;
+  margin: 10px;
 }
-
-.siteFooter > div{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-left: 30px;
-  margin-right: 30px;
-  width: 100px;
-}
-
-.siteFooter .footerIcon{
+.slideFooter img{
   width: 30px;
   height: 30px;
 }
-
-.adoptFooter{
-  padding-bottom: 60px;
-}
-/*******************/
-/* footer css ends */
-/*******************/
+/**********************/
+/* slide bar css ends */
+/**********************/

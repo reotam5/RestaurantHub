@@ -8,27 +8,28 @@ $(document).ready(function() {
   /****************************/
   /* Jquery for navbar starts */
   /****************************/
-  $(".siteNav").next().addClass("adoptNav");
+  $(".slidebar").next().addClass("adoptNav");
 
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
-      $(".siteNav").addClass("transform");
+      $(".siteHead").addClass("transform");
     }else{
-      $(".siteNav").removeClass("transform");
+      $(".siteHead").removeClass("transform");
+    }
+  });
+  $(document).on("click", function(event) {
+    var target = $(event.target);
+    if (target.is(".btn-slide")) {
+      $('.slidebar').toggleClass('openNav');
+    }else if(target.is(".nav")){
+      $('.slidebar').addClass('openNav');
+    }else{
+      $(".slidebar").removeClass("openNav");
     }
   });
 
   /**************************/
   /* Jquery for navbar ends */
-  /**************************/
-
-
-  /****************************/
-  /* Jquery for footer starts */
-  /****************************/
-  $(".siteFooter").prev().addClass("adoptFooter");
-  /**************************/
-  /* Jquery for footer ends */
   /**************************/
 
 });

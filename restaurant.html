@@ -21,30 +21,94 @@
 </head>
 
 <body>
-  <!-------------------->
-  <!-- Nav bar starts -->
-  <!-------------------->
-  <header class="siteNav">
-    <a href="profile.html" id="myAccount">
-      <div type="button" class="myAccountDiv btn-outline-secondary">
-        <img class="myAccount" src="images/myAccount.png" alt="myAccount"/>
-      </div>
-    </a>
-    <a href="index.html" id="siteInfo">
-      <div type="button" class="siteInfo btn-outline-secondary">
+  <!------------------->
+  <!-- header starts -->
+  <!------------------->
+  <header class="siteHead">
+    <div type="button" class="btn-slide">
+       <img class="btn-slide" src="images/menu.png" alt="myAccount"/>
+    </div>
+    <a href="index.html" class="siteInfo">
+      <div class="siteInfo">
         <div class="siteTitle">Restaurant Hub</div>
         <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
       </div>
     </a>
-    <a href="shoppingCart" id="shoppingCart">
-      <div type="button" class="shoppingCartDiv btn-outline-secondary">
+    <a href="shoppingCart" class="shoppingCart">
+      <div class="shoppingCartDiv">
         <img class="shoppingCart" src="images/shoppingCart.png" alt="shoppingCart"/>
       </div>
     </a>
   </header>
-  <!------------------>
-  <!-- Nav bar ends -->
-  <!------------------>
+  <!----------------->
+  <!-- header ends -->
+  <!----------------->
+
+
+  <!---------------------->
+  <!-- slide bar starts -->
+  <!---------------------->
+
+  <div class="slidebar">
+    <div class="slideHeader">
+      <a href="#">
+        <img src="images/close.png" alt="close">
+      </a>
+      <div class="siteInfo">
+        <div class="siteTitle">Restaurant Hub</div>
+        <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
+      </div>
+    </div>
+
+    <div class="slideContent">
+      <ul>
+        <li>
+          <a href="main.html">
+            <img src="images/home.png" alt="home" style="filter: invert(1);">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="favorite.html">
+            <img src="images/favorite.png" alt="favorite" style="filter: invert(1);">
+            Favorite
+          </a>
+        </li>
+        <li>
+          <a href="map.html">
+            <img src="images/map.png" alt="map" style="filter: invert(1);">
+            Map
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="slideFooter">
+      <a href="notification.html">
+        <div class="slideFooterItems notification">
+          <img class="notification" src="images/notification.png" alt="notification">
+          Notification
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="slideFooterItems myProfile">
+          <img class="myProfile" src="images/person.png" alt="myProfile">
+          Profile
+        </div>
+      </a>
+      <a href="setting.html">
+        <div class="slideFooterItems setting">
+          <img class="setting" src="images/setting.png" alt="setting">
+          Setting
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-------------------->
+  <!-- slide bar ends -->
+  <!-------------------->
+
 
   <!---------------------------->
   <!-- restaurant head starts -->
@@ -130,6 +194,7 @@
       Scroll
       <br/>
       A long paragraph.
+
       <!------------------------------->
       <!-- Overview tab content ends -->
       <!------------------------------->
@@ -138,6 +203,7 @@
       <!----------------------------->
       <!-- Menu tab content starts -->
       <!----------------------------->
+
       This is menu.
       <br/>
       Scroll
@@ -173,6 +239,7 @@
       Scroll
       <br/>
       A long paragraph.
+
       <!--------------------------->
       <!-- Menu tab content ends -->
       <!--------------------------->
@@ -181,6 +248,7 @@
       <!------------------------------->
       <!-- Reserve tab content start -->
       <!------------------------------->
+
       This is reserve.
       <br/>
       Scroll
@@ -216,6 +284,7 @@
       Scroll
       <br/>
       A long paragraph.
+
       <!------------------------------>
       <!-- Reserve tab content ends -->
       <!------------------------------>
@@ -225,30 +294,6 @@
   <!-------------->
   <!-- tab ends -->
   <!-------------->
-
-  <!------------------->
-  <!-- footer starts -->
-  <!------------------->
-  <div class="siteFooter">
-    <a href="main.html" type="button" class="btn-outline-secondary">
-      <div class="footerHome">
-        <img class="footerHomeIcon footerIcon" src="images/home.png" alt="footerHomeIcon"/>
-      </div>
-    </a>
-    <a href="map.html" type="button" class="btn-outline-secondary">
-      <div class="footerMap">
-        <img class="footerMap footerIcon" src="images/map.png" alt="footerMap"/>
-      </div>
-    </a>
-    <a href="favorite.html" type="button" class="btn-outline-secondary">
-      <div class="footerFavorite">
-        <img class="footerFavorite footerIcon" src="images/favorite.png" alt="footerFavorite"/>
-      </div>
-    </a>
-  </div>
-  <!----------------->
-  <!-- footer ends -->
-  <!----------------->
 
 
   <!-- homemade script -->
