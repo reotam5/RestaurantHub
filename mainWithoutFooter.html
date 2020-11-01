@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- homemade css -->
-  <link rel="stylesheet" href="styles/universal.css"/>
+  <link rel="stylesheet" href="styles/mainWithoutFooter.css"/>
 
   <!-- boostrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -20,27 +20,92 @@
 </head>
 
 <body>
-  <!-------------------->
-  <!-- Nav bar starts -->
-  <!-------------------->
+  <!------------------->
+  <!-- header starts -->
+  <!------------------->
   <header class="siteNav">
-    <a href="profile.html" id="myAccount">
-      <div type="button" class="myAccountDiv btn-outline-secondary">
-        <img class="myAccount" src="images/myAccount.png" alt="myAccount"/>
+    <a class="btn-nav">
+      <div type="button" class="btn-nav">
+        <img class="btn-nav" src="images/menu.png" alt="myAccount"/>
       </div>
     </a>
     <a href="index.html" id="siteInfo">
-      <div type="button" class="siteInfo btn-outline-secondary">
+      <div type="button" class="siteInfo">
         <div class="siteTitle">Restaurant Hub</div>
         <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
       </div>
     </a>
     <a href="shoppingCart" id="shoppingCart">
-      <div type="button" class="shoppingCartDiv btn-outline-secondary">
+      <div type="button" class="shoppingCartDiv">
         <img class="shoppingCart" src="images/shoppingCart.png" alt="shoppingCart"/>
       </div>
     </a>
   </header>
+  <!----------------->
+  <!-- header ends -->
+  <!----------------->
+
+
+  <!-------------------->
+  <!-- Nav bar starts -->
+  <!-------------------->
+
+  <div class="nav">
+    <div class="navHeader">
+      <a href="#">
+        <img src="images/close.png" alt="close">
+      </a>
+      <div class="siteInfo">
+        <div class="siteTitle">Restaurant Hub</div>
+        <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
+      </div>
+    </div>
+
+    <div class="navContent">
+      <ul>
+        <li>
+          <a href="main.html">
+            <img src="images/home.png" alt="home" style="filter: invert(1);">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="favorite.html">
+            <img src="images/favorite.png" alt="favorite" style="filter: invert(1);">
+            Favorite
+          </a>
+        </li>
+        <li>
+          <a href="map.html">
+            <img src="images/map.png" alt="map" style="filter: invert(1);">
+            Map
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navFooter">
+      <a href="notification.html">
+        <div class="navFooterItems notification">
+          <img class="notification" src="images/notification.png" alt="notification">
+          Notification
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="navFooterItems myProfile">
+          <img class="myProfile" src="images/person.png" alt="myProfile">
+          Profile
+        </div>
+      </a>
+      <a href="setting.html">
+        <div class="navFooterItems setting">
+          <img class="setting" src="images/setting.png" alt="setting">
+          Setting
+        </div>
+      </a>
+    </div>
+  </div>
+
   <!------------------>
   <!-- Nav bar ends -->
   <!------------------>
@@ -83,34 +148,8 @@
   </div>
 
 
-
-  <!------------------->
-  <!-- footer starts -->
-  <!------------------->
-  <div class="siteFooter">
-    <a href="main.html" type="button" class="btn-outline-secondary">
-      <div class="footerHome">
-        <img class="footerHomeIcon footerIcon" src="images/home.png" alt="footerHomeIcon"/>
-      </div>
-    </a>
-    <a href="map.html" type="button" class="btn-outline-secondary">
-      <div class="footerMap">
-        <img class="footerMap footerIcon" src="images/map.png" alt="footerMap"/>
-      </div>
-    </a>
-    <a href="favorite.html" type="button" class="btn-outline-secondary">
-      <div class="footerFavorite">
-        <img class="footerFavorite footerIcon" src="images/favorite.png" alt="footerFavorite"/>
-      </div>
-    </a>
-  </div>
-  <!----------------->
-  <!-- footer ends -->
-  <!----------------->
-
-
   <!-- homemade script -->
-  <script src="scripts/universal.js"></script>
+  <script src="scripts/mainWithoutFooter.js"></script>
 
   <!-- Boostrap -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

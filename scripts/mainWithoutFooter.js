@@ -8,7 +8,7 @@ $(document).ready(function() {
   /****************************/
   /* Jquery for navbar starts */
   /****************************/
-  $(".siteNav").next().addClass("adoptNav");
+  $(".nav").next().addClass("adoptNav");
 
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
@@ -17,18 +17,20 @@ $(document).ready(function() {
       $(".siteNav").removeClass("transform");
     }
   });
+  $(document).on("click", function(event) {
+    console.log($(event.target).is(".btn-nav"));
+    var target = $(event.target);
+    if (target.is(".btn-nav")) {
+      $('.nav').toggleClass('openNav');
+    }else if(target.is(".nav")){
+      $('.nav').addClass('openNav');
+    }else{
+      $(".nav").removeClass("openNav");
+    }
+  });
 
   /**************************/
   /* Jquery for navbar ends */
-  /**************************/
-
-
-  /****************************/
-  /* Jquery for footer starts */
-  /****************************/
-  $(".siteFooter").prev().addClass("adoptFooter");
-  /**************************/
-  /* Jquery for footer ends */
   /**************************/
 
 });
