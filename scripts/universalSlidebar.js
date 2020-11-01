@@ -8,24 +8,24 @@ $(document).ready(function() {
   /****************************/
   /* Jquery for navbar starts */
   /****************************/
-  $(".nav").next().addClass("adoptNav");
+  $(".slidebar").next().addClass("adoptNav");
 
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
-      $(".siteNav").addClass("transform");
+      $(".siteHead").addClass("transform");
     }else{
-      $(".siteNav").removeClass("transform");
+      $(".siteHead").removeClass("transform");
     }
   });
   $(document).on("click", function(event) {
-    console.log($(event.target).is(".btn-nav"));
+    console.log($(event.target).is(".btn-slide"));
     var target = $(event.target);
-    if (target.is(".btn-nav")) {
-      $('.nav').toggleClass('openNav');
+    if (target.is(".btn-slide")) {
+      $('.slidebar').toggleClass('openNav');
     }else if(target.is(".nav")){
-      $('.nav').addClass('openNav');
+      $('.slidebar').addClass('openNav');
     }else{
-      $(".nav").removeClass("openNav");
+      $(".slidebar").removeClass("openNav");
     }
   });
 

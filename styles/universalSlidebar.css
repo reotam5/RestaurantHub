@@ -17,7 +17,7 @@
   border-bottom: black 2px solid;
   z-index: 4;
 }
-.siteHead a[class="btn-nav"]{
+.siteHead a[class="btn-slide"]{
   margin-left: 0px;
   width: 40px;
   height: 100%;
@@ -41,9 +41,6 @@
 .transform-test{
   padding: 4px 8px 4px 8px !important;
 }
-.navbar{
-  transition: 0.5s;
-}
 
 .siteHead img {
   width: 25px;
@@ -62,7 +59,7 @@
   font-weight: bold;
   font-size: 20px;
 }
-.siteHead div.btn-nav{
+.siteHead div.btn-slide{
   height: 100%;
   display: flex;
   justify-content: center;
@@ -90,10 +87,10 @@
 /***********************/
 
 
-/**********************/
-/* nav bar css starts */
-/**********************/
-div.nav {
+/************************/
+/* slide bar css starts */
+/************************/
+div.slidebar {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -108,36 +105,35 @@ div.openNav {
 	transform: translate(0); 
 }
 
-.navHeader{
+.slideHeader{
   height: 50px;
-  width: 100%;
   margin: 10px;
   display: flex;
   align-items: center;
   border-bottom:white 2px solid;
 }
 
-.navHeader > .siteInfo{
+.slideHeader > .siteInfo{
   display: flex;
   align-items: center;
   margin-left: 30px;
 }
 
-.navHeader > .siteInfo > .siteTitle{
+.slideHeader > .siteInfo > .siteTitle{
   color: white;
   font-size: 15pt;
 }
 
-.navHeader > .siteInfo > .siteLogo{
+.slideHeader > .siteInfo > .siteLogo{
   filter: invert(1);
 }
 
-.navHeader img{
+.slideHeader img{
   width: 20px;
   height: 20px;
 } 
 
-.nav .navContent{
+.slidebar .slideContent{
   color: white;
   width: 100%;
   position: absolute;
@@ -145,24 +141,24 @@ div.openNav {
   transform: translateY(80px);
 }
 
-.nav .navContent ul{
+.slidebar .slideContent ul{
   list-style-type: none;
   font-size: 15pt;
 }
-.nav .navContent ul li{
+.slidebar .slideContent ul li{
   margin: 20px;
 }
-.nav .navContent ul a{
+.slidebar .slideContent ul a{
   color: inherit;
   display: flex;
   align-items: center;
 }
-.nav .navContent ul a img{
+.slidebar .slideContent ul a img{
   width: 20px;
   height: 20px;
 }
 
-.navFooter{
+.slideFooter{
   position: fixed;
   bottom: 0;
   height: 50px;
@@ -173,7 +169,7 @@ div.openNav {
   margin-bottom: 10px;
 }
 
-.navFooter .navFooterItems{
+.slideFooter .slideFooterItems{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -181,10 +177,10 @@ div.openNav {
   color: white;
   margin: 10px;
 }
-.navFooter img{
+.slideFooter img{
   width: 30px;
   height: 30px;
 }
-/********************/
-/* nav bar css ends */
-/********************/
+/**********************/
+/* slide bar css ends */
+/**********************/
