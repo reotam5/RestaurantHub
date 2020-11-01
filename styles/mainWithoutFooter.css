@@ -5,29 +5,31 @@
 /*********************/
 /* header css starts */
 /*********************/
-.siteNav{
+.siteHead{
   display: flex;
   position: fixed;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   transition: 0.5s;
   width: 100%;
   height: 60px;
   background-color: white;
   border-bottom: black 2px solid;
-  z-index: 5;
+  z-index: 4;
 }
-.siteNav a[id="myAccount"]{
-  margin-left: 20px;
-  width: 50px;
+.siteHead a[class="btn-nav"]{
+  margin-left: 0px;
+  width: 40px;
   height: 100%;
 }
-.siteNav a[id="shoppingCart"]{
+.siteHead a[class="shoppingCart"]{
   margin-right: 20px;
   width: 50px;
   height: 100%;
+  position: absolute;
+  right: 0;
 }
-.siteNav a[id="SiteInfo"]{
+.siteHead a[class="SiteInfo"]{
   height: 100%;
 }
 
@@ -43,29 +45,31 @@
   transition: 0.5s;
 }
 
-.siteNav img {
-  width: 30px;
-  height: 30px;
+.siteHead img {
+  width: 25px;
+  height: 25px;
 }
 
-.siteNav .siteInfo{
+.siteHead .siteInfo{
   display: flex;
+  margin-left: 10px;
+  align-items: center;
   color: black;
 }
 
-.siteNav .siteInfo .siteTitle{
+.siteHead .siteInfo .siteTitle{
   margin-right: 10px;
   font-weight: bold;
   font-size: 20px;
 }
-.siteNav div.btn-nav{
+.siteHead div.btn-nav{
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
 }
-.siteNav .shoppingCartDiv{
+.siteHead .shoppingCartDiv{
   height: 100%;
   display: flex;
   justify-content: center;
