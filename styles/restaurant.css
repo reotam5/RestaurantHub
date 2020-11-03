@@ -78,7 +78,11 @@
   margin: 15px;
 }
 
-
+.restaurant-section-title{
+  font-size: 20pt;
+  font-weight: bold;
+  display: block;
+}
 .restaurant-bio{
   background-color: aliceblue; 
   border-radius: 10px;
@@ -88,17 +92,43 @@
   background-color: aliceblue; 
   border-radius: 10px;
   margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
+
 .restaurant-pictures{
   background-color: aliceblue; 
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 10px;
 }
 .restaurant-reviews{
   background-color: aliceblue; 
   border-radius: 10px;
   margin: 10px;
+}
+.reserve-date-div{
+  height: 100px;
+  background-color: aliceblue;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+}
+.reserve-time-div{
+  height: 100px;
+  background-color: aliceblue;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+}
+.reserve-submit-div{
+  height: 100px;
+  margin: 10px;
+}
+#reservation{
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+  font-weight: bold;
 }
