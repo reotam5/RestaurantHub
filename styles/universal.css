@@ -110,7 +110,7 @@ div.slidebar {
 	background-color: rgb(53, 53, 53);
 	transition: 0.2s;
 	transform: translate(-300px);
-	z-index: 5;
+	z-index: 100;
 }
 div.openNav {
 	transform: translate(0); 
