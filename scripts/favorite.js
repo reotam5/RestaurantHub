@@ -4,7 +4,6 @@ $(document).ready(function(){
   CreateFavoriteBlock(2,"restaurant.html");
   CreateFavoriteBlock(3,"restaurant.html");
   CreateFavoriteBlock(4,"restaurant.html");
-  CreateFavoriteBlock(5,"restaurant.html");
 
 });
 
@@ -26,18 +25,19 @@ function CreateFavoriteBlock(id,url){
 }
 
 function writeCode(id,url,name,image){
-  var block = '<div class="favorite-content col" id="favorite-'+id+'">';
+  var block = '<div class="favorite-content col-sm-12 col-md-6" id="favorite-'+id+'">';
   block +=    '  <img src="'+image+'" class="favorite-img" alt="restaurant image"/>';
   block +=    '  <div class="favorite-img-blur"></div>';
-  block +=    '  <a type="button" href="'+url+'" class="favorite-details">';
+  block +=    '  <div class="favorite-details">';
+  block +=    '    <a type="button" href="'+url+'" class="favorite-details-a"></a>';
   block +=    '    <div class="favorite-name">';
   block +=    '      '+name;
   block +=    '    </div>';
   block +=    '    <a type="button" href="'+url+'#reserve-tab" class="favorite-reserve">';
   block +=    '      Reserve Now';
   block +=    '    </a>';
-  block +=    '  </a>';
-  block +=    '  <img type="button" class="favorite-delete" id="favorite'+id+'" src="images/delete.png" alt="delete" data-toggle="modal" data-target="#exampleModal">';
+  block +=    '  </div>';
+  block +=    '  <img type="button" class="favorite-delete" id="favorite'+id+'" src="images/delete.png" alt="delete" data-toggle="modal" data-target="#deleteModal">';
   block +=    '</div>';
 
   $("#favorite-list").append($(block));

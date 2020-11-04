@@ -20,22 +20,27 @@
     <div class="pageTitle">
       My favorite
     </div>
-    <div id="favorite-list">
+    <div id="favorite-list" class="row">
       <!-- This is the template that will be added automatically by favorite.js
-      <div class="favorite-content col" id="favorite-1">
-      <img src="images/restaurant1.jpg" class="favorite-img" alt="restaurant image"/>
-      <div class="favorite-img-blur"></div>
-      <a type="button" href="restaurant.html" class="favorite-details">
-        <div class="favorite-name">
-          Name
+      <div class="favorite-content col-sm-12 col-md-6" id="favorite-1">
+        <img src="images/restaurant1.jpg" class="favorite-img" alt="restaurant image"/>
+        <div class="favorite-img-blur"></div>
+        <div class="favorite-details">
+          <a type="button" href="restaurant.html" class="favorite-details-a"></a>
+          <div class="favorite-name">
+            Name
+          </div>
+          <a type="button" href="restaurant.html#reserve-tab" class="favorite-reserve">
+            Reserve Now
+          </a>
         </div>
-        <a type="button" href="restaurant.html#reserve-tab" class="favorite-reserve">
-          Reserve Now
-        </a>
-      </a>
-      <img type="button" class="favorite-delete" id="favorite1" src="images/delete.png" alt="delete">
-    </div>
-    -->
+        <img type="button" class="favorite-delete" id="favorite1" src="images/delete.png" alt="delete">
+      </div>
+      -->
+  
+
+
+
     
 
     </div>
@@ -43,12 +48,12 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete from favorite</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete from favorite</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
