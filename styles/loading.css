@@ -1,0 +1,28 @@
+.wrapper {
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+
+.siteLogo {
+  width: 25px;
+  height: 25px;
+}
+
+.location {
+  width: 50%;
+  max-width: 350px;
+}
+
+.searching {
+  font-weight: bold;
+  font-size: 25pt;
+}
+
+.to-favourites img {
+  width: 200px;
+  float: right;
+}
