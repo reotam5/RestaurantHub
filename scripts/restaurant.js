@@ -10,6 +10,11 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover()
   })
 
+  /* simulate click to go to reserve tab directly */
+  if(window.location.hash == "#reserve-tab") {
+    $("#reserve-tab").click()
+  }
+
 
 
 });
