@@ -39,7 +39,6 @@ $(document).ready(function() {
   /****************************/
   /* Jquery for navbar starts */
   /****************************/
-
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
       $(".siteHead").addClass("transform");
@@ -61,6 +60,7 @@ $(document).ready(function() {
   /**************************/
   /* Jquery for navbar ends */
   /**************************/
+
 
 });
 

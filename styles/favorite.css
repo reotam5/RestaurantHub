@@ -1,0 +1,78 @@
+
+.pageTitle{
+  margin: 10px;
+  font-size: 20pt;
+  font-weight: bold;
+}
+.favorite-content{
+  display: block;
+  width: 95% !important;
+  height: 150px;
+  margin-bottom: 10px;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+  margin: 0 auto;
+}
+.favorite-img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.favorite-img-blur{
+  position: absolute;
+  transform: translateY(-100%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(214, 214, 214, 0.63);
+  border-radius: 10px;
+}
+.favorite-details{
+  display: block;
+  transform: translateY(-100%);
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgb(17, 14, 9);
+}
+.favorite-details:hover{
+  position: relative;
+  background-color: rgba(214, 214, 214, 0.63);
+  box-shadow: 0px 0px 0px white;
+}
+.favorite-name{
+  font-size: 25pt;
+  font-weight: bold;
+  transform: translateY(-100%);
+}
+.favorite-reserve{
+  transform: translate(5px,-200px);
+  display: block;
+  background-color: white;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+  border: black 1px solid;
+}
+.favorite-reserve:hover{
+  background-color: rgba(214, 214, 214, 0.63);
+  z-index: 5;
+}
+.favorite-delete{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+a{
+  color: black !important;
+}
+a:hover{
+  color: black !important;
+}
