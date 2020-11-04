@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="styles/favorite.css" />
+  <link rel="stylesheet" href="styles/loading.css" />
 </head>
 
 <body>
@@ -75,11 +76,12 @@
   <!-- This is temporary loading screen. -->
   <!-- Add loading div with class name ".loading-bg" and it will apear in page. -->
   <div class="loading-bg">
-    <div class="spinner-border text-primary" role="status">
-    </div>
-    <p>Temporary loading screen.</p>
-    <br />
-    <p>Loading screen goes here.</p>
+    <div class="wrapper">
+    <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
+    <h1>Restaurant Hub</h1>
+    <img class="location blink" src="images/location.png" alt="location-icon"/>
+    <p class="searching blink">Getting ready.....</p>
+  </div>
   </div>
 
   <!------------------------------->
@@ -103,7 +105,7 @@
   <!--------------------------->
 
   <script src="scripts/favorite.js"></script>
-
+  <script src="scripts/loading.js"></script>
 </body>
 
 </html>

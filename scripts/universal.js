@@ -5,7 +5,7 @@
 
 
 $(document).ready(function() {
-  setTimeout('forceStop()',3000);
+  setTimeout('forceStop()',5000);
 
   /* setting up loading screen(Loading screen is not included automatically. Add loading screen with class name ".loading-bg") */
   $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
