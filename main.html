@@ -16,6 +16,9 @@
   <!-- content starts -->
   <!-------------------->
   <div class="wrapper">
+    <!-------------------->
+    <!-- Search Bar -->
+    <!-------------------->
     <nav class="navbar navbar-light bg-light justify-content-center">
       <a class="navbar-brand"></a>
       <form class="form-inline">
@@ -27,49 +30,67 @@
             <path fill-rule="evenodd"
               d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
           </svg></button>
-        <button type="button" class="btn btn-outline-dark btn-sm" id="button2" data-toggle="modal" data-target="#filterModal"><svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-            class="bi bi-filter" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" class="btn btn-outline-dark btn-sm" id="button2" data-toggle="modal"
+          data-target="#filterModal"><svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-filter"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
           </svg></button>
-          
-          
-          <!----Filter Modal Pop Up---->
-          <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                      Requires Mask
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                    <label class="form-check-label" for="defaultCheck2">
-                      Has Table Tracker Feature
-                    </label>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-light">Return Defaults</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-success">Apply</button>
-                  
 
+
+        <!----Filter Modal Pop Up---->
+        <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Requires Mask
+                  </label>
                 </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    Has Table Tracker Feature
+                  </label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light">Return Defaults</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success">Apply</button>
               </div>
             </div>
           </div>
+        </div>
       </form>
     </nav>
+
+    <!--------------------->
+    <!-- Restaurant Info -->
+    <!--------------------->
+    <!-- Can use javascript to add to this -->
+    <div class="restaurant-info">
+      <div class="restaurant-image">
+        <div class="restaurantStars">
+          <img class="star" id="star1" src="images/star.png"/>
+        </div>
+        <img src="" alt=""/>
+        <p class="restaurant-name"></p>
+      </div>
+      <div class="restaurant-details">
+        <div class="restaurant-icons"></div>
+        <div class="hours"></div>
+      </div>
+    </div>
+
   </div>
   <!------------------>
   <!-- content ends -->
@@ -93,6 +114,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
   <script src="scripts/universal.js"></script>
+  <script src="scripts/main.js"></script>
   <!--------------------------->
   <!-- REQUIRED SECTION ENDS -->
   <!--------------------------->
