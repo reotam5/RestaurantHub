@@ -53,3 +53,10 @@ function writeCode(id,url,name,image){
 function deleteFavorite(id){
   console.log(id + " remove!! Write code for firestore!");
 }
+
+db.collection("restaurants").doc("Ywh4LJqPqrkfxekwdihz")
+.get()
+.then(function(doc){
+  console.log(loggedin);
+  console.log(doc.data());
+});

@@ -41,5 +41,17 @@ $(document).ready(function() {
 
   //Disabling loading acreen
   $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
+});
 
+var loggedin = false;
+var user;
+
+firebase.auth().onAuthStateChanged(function(me) {
+  if (me) {
+    user = me
+    loggedin = true;
+  } else {
+    user = null
+    loggedin = false;
+  }
 });
