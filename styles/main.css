@@ -7,7 +7,18 @@ nav{
     transition: 0.5s;
 }
 
-@media (max-width: 760px) {
+@media only screen and (min-width : 761px) {
+    .restaurant-image > img {
+        width: 250px;
+    }
+
+    .restaurant-image {
+        margin: auto;
+    }
+}
+
+
+@media only screen and (max-width : 760px) {
     .form-inline .form-control {
       display: inline-block;
       width: auto;
@@ -15,7 +26,61 @@ nav{
       margin-right: 5px;
     }
 
+    .restaurant-image > img {
+        width: 90%;
+    }
+
+    .restaurant-image {
+        margin-left: 15px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
 .restaurant-info {
     display: none;
 } 
+
+div[class ^= "restaurant-panel"] {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 48% 2% 50%;;
+    border: 2px solid grey;
+    border-radius: 7px;
+    box-shadow: 0 0 20px #9ecaed;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.restaurant-image {
+    grid-column: 1;
+}
+
+.restaurant-details {
+    grid-column: 3;
+    display: grid;
+    grid-row: 20% 80%;
+}
+
+.restaurant-icons {
+    text-align: left;
+    margin-right: 15%;
+}
+
+.hours {
+    text-align: left;
+
+}
+
+.hours p {
+    margin: 0;
+}
+
+.restaurantStars img {
+    width: 20px;
+}
+
+.restaurant-icons img {
+    width: 20px;
+    margin: 10px;
 }
