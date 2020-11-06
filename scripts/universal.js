@@ -48,10 +48,10 @@ var user;
 
 firebase.auth().onAuthStateChanged(function(me) {
   if (me) {
-    user = me
+    user = me;
     loggedin = true;
   } else {
-    user = null
+    user = null;
     loggedin = false;
   }
 });
