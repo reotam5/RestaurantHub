@@ -15,8 +15,10 @@ $(document).ready(function() {
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
       $(".siteHead").addClass("transform");
+      $(".fixed-head").addClass("custom-transform");
     }else{
       $(".siteHead").removeClass("transform");
+      $(".fixed-head").removeClass("custom-transform");
     }
   });
 
