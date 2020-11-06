@@ -1,44 +1,17 @@
 /*************************************************************************
- * This is for script that is universal to most of the pages(EX. nav bar)
+ * This supports universal components. EX) header, slide bar...
  ************************************************************************/
-
-
+//enabling loading screen
+$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
 
 $(document).ready(function() {
-  setTimeout('forceStop()',5000);
-
-  /* setting up loading screen(Loading screen is not included automatically. Add loading screen with class name ".loading-bg") */
-  $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-  /*******************************************/
-  /* Jquery for putting universal components */
-  /*******************************************/
-  $.ajax({
-    url: "universalContent.html",
-    cache: false,
-    datatype: 'html',
-    success: function(html) {
-        var result = $(html);
-        if(!$("body").hasClass("NoUniversal")){
-          var paddingTarget = $("body").children().first();
-          var addPadding = parseFloat(paddingTarget.css("margin-top")) + 60 + "px"
-          paddingTarget.css("padding-top",addPadding);
-          var dom = $(document.createElement("html"));
-          dom[0].innerHTML = html;
-          var body = dom.find("body");
-          $("body").prepend(body.children());
-        }else{
-          console.log("This page's body has 'NoUniversal' class. Therefore no universal components were added.");
-        }
-    }
-  }).done(function() {
-    /* Loading screen fadeout after ajax done */
-    $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
-  });
-
 
   /****************************/
-  /* Jquery for navbar starts */
+  /* Jquery for header starts */
   /****************************/
+  var paddingTarget = $(".slidebar").next();
+  var addPadding = parseFloat(paddingTarget.css("margin-top")) + 60 + "px"
+  paddingTarget.css("padding-top",addPadding);
   $(window).scroll(function() {
     if($(window).scrollTop() != 0){
       $(".siteHead").addClass("transform");
@@ -47,6 +20,9 @@ $(document).ready(function() {
     }
   });
 
+  /*******************************/
+  /* Jquery for slide bar starts */
+  /*******************************/
   $(document).on("click", function(event) {
     var target = $(event.target);
     if (target.is(".btn-slide")) {
@@ -61,9 +37,7 @@ $(document).ready(function() {
   /* Jquery for navbar ends */
   /**************************/
 
+  //Disabling loading acreen
+  $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
 
 });
-
-function forceStop(){
-  $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
-}
