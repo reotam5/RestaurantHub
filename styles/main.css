@@ -1,8 +1,17 @@
 #button2{
 
     margin-left: 5px;
+    margin-right: 5px;
 }
+
+@media (max-width: 760px) {
+    .form-inline .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
 
 .restaurant-info {
     display: none;
-}
+} }
