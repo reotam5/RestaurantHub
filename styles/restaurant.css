@@ -132,3 +132,18 @@
   background-color: aliceblue;
   font-weight: bold;
 }
+
+.carousel-item img{
+  height: 50vw !important;
+  object-fit: cover;
+}
+
+.setFav{
+  width: 35px;
+  height: 35px;
+  filter: invert(1);
+  position: absolute;
+  top: 60px;
+  right: 0;
+  margin: 10px;
+}

@@ -1,23 +1,75 @@
 /******************************************/
 /* This is javascript for restaurant.html */
 /******************************************/
+var urlParams = new URLSearchParams(window.location.search);
+var restID = urlParams.get("req");
+uid = "Ti1AGHZKdfhC7Wu2edpe";
+var custRef = db.collection("users").doc(uid);
+var restRef = db.collection("restaurants").doc(restID);
+
 $(document).ready(function() {
 
-  var stars = 4;
-  setStar(3);
-
   $(function () {
-    $('[data-toggle="popover"]').popover()
+    $('[data-toggle="popover"]').popover();
   })
 
   /* simulate click to go to reserve tab directly */
-  if(window.location.hash == "#reserve-tab") {
-    $("#reserve-tab").click()
+  var tarTab = urlParams.get("tab");
+  if(tarTab != null){
+    $("#"+tarTab).click()
   }
 
+  checkFav();
+  $(".setFav").on("click",function(event){
+    setFav();
+  });
 
+  
+  listenRestaurant(restID);
 
+  listenReviews(restID);
 });
+
+function setFav(){
+
+  db.collection("fav_restaurant")
+  .where("CUST_ID","==", custRef)
+  .where("REST_ID","==",restRef)
+  .get()
+  .then(function(query){
+    if(!query.empty){
+      query.forEach(doc =>{
+        db.collection("fav_restaurant").doc(doc.id).delete()
+        .then(function(){
+          $(".setFav").css("filter","invert(0.5)");
+        });
+      });
+    }else{
+      var favInfo = {
+        CUST_ID: custRef,
+        DATE: firebase.firestore.FieldValue.serverTimestamp(),
+        REST_ID: restRef
+      }
+      db.collection("fav_restaurant").add(favInfo)
+      .then(function(){
+        $(".setFav").css("filter","invert(1)");
+      });
+    }
+  });
+}
+function checkFav(){
+  db.collection("fav_restaurant")
+  .where("CUST_ID","==", custRef)
+  .where("REST_ID","==",restRef)
+  .get()
+  .then(function(query){
+    if(!query.empty){
+      $(".setFav").css("filter","invert(1)");
+    }else{
+      $(".setFav").css("filter","invert(0.5)");
+    }
+  });
+}
 
 
 function setStar(stars){
@@ -27,3 +79,178 @@ function setStar(stars){
     }
   }
 }
+
+function listenRestaurant(restID){
+  db.collection("restaurants").doc(restID)
+  .onSnapshot(function(snap){
+    var name = snap.data()["REST_NAME"];
+    var bio = snap.data()["REST_BIO"];
+    var [bigImage , ...restImage] = snap.data()["IMG_URL"];
+    var hours = snap.data()["HOURS"];
+    var safety = snap.data()["SAFETY_PROTOCOL"];
+    var traits = snap.data()["TRAITS"];
+    var contact = snap.data()["CONTACT"];
+    var menu = snap.data()["MENU"];
+    console.log(menu);
+    updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,contact,menu);
+  });
+}
+
+function updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,contact,menu){
+  var storageRef = firebase.storage().ref().child("restaurants/"+restID);
+
+  //main image
+  var imgRef = storageRef.child(bigImage);
+  imgRef.getDownloadURL().then(function(url){
+    $("img.restaurantImage").attr("src",url);
+  });
+
+  //restaurant images 
+  if(restImage.length > 0){
+    var block = '<div class="carousel-item">';
+    block +=    '  <img src="images/restaurant.jpg" class="d-block w-100" alt="...">';
+    block +=    '</div>';
+    var is_first = true;
+    for(url in restImage){
+      var targetUrl = restImage[url];
+      var imgRef = storageRef.child(targetUrl);
+      imgRef.getDownloadURL().then(function(url){
+        if(is_first){
+          is_first = false;
+          var carousel = $(block).addClass("active");
+        }else{
+          var carousel = $(block)
+        }
+        carousel.find("img").attr("src",url)
+        $(".carousel-inner").append(carousel);
+      });
+    }
+  }else{
+    $(".restaurant-pictures").remove();
+  }
+  
+  //traits
+  if(!traits["ONLINE_RESERVE"]){
+    $("img.reserveIcon").remove();
+  }
+  if(!traits["TABLE_TRACK"]){
+    $("img.tableTracker").remove();
+  }
+  if(!traits["VARIFIED"]){
+    $("img.verifiedHours").remove();
+  }
+
+  //name
+  $(".restaurantName").html(name);
+  
+  //contact
+  $("#rest-address").html("Address:&nbsp;"+contact["ADDRESS"]);
+  $("#rest-email").html("Email:&nbsp;"+contact["EMAIL"]);
+  $("#rest-phone").html("Phone:&nbsp;"+contact["PHONE"]);
+
+  //bio
+  $(".restaurant-bio").append(bio)
+
+  //menu
+  var menuBlock = '<div class="card">';
+  menuBlock +=    ' <div class="card-header">';
+  menuBlock +=    '   <h2 class="mb-0">';
+  menuBlock +=    '     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="false">';
+  menuBlock +=    '       ';
+  menuBlock +=    '     </button>';
+  menuBlock +=    '   </h2>';
+  menuBlock +=    ' </div>';
+  menuBlock +=    ' <div class="collapse show" data-parent="#restaurantMenu">';
+  menuBlock +=    '   <div class="card-body">';
+  menuBlock +=    '     <ul>';
+  menuBlock +=    '     </ul>';
+  menuBlock +=    '   </div>';
+  menuBlock +=    ' </div>';
+  menuBlock +=    '</div>';
+
+  
+  for(let category in menu){
+    editBlock = $(menuBlock);
+    
+    editBlock.find(".card-header").attr("id",category);
+    editBlock.find(".collapse")
+      .attr("aria-labelledby",category)
+      .attr("id","collapse-"+category);
+    editBlock.find("button")
+      .attr("data-target","#collapse-"+category)
+      .attr("aria-controls","collapse-"+category)
+      .html(category);
+    
+    for(let food in menu[category]){
+      var price = menu[category][food];
+      editBlock.find("ul")
+        .append($("<li>"+food+" ----- "+price+"</li>"));
+    }
+    $("#restaurantMenu").append(editBlock);
+  }
+}
+
+
+function listenReviews(restID){
+  var restRef = db.collection("restaurants").doc(restID);
+  var starArr = [];
+  db.collection("reviews")
+  .where("REST_ID","==",restRef)
+  .onSnapshot(function(snapQuery){
+    snapQuery.forEach(snap =>{
+      var cust_name = snap.data()["CUST_NAME"];
+      var date = snap.data()["DATE"];
+      var review = snap.data()["REVIEW"];
+      var stars = snap.data()["STARS"];
+      starArr.push(stars);
+      updateReviews(cust_name,date,review,stars);
+    });
+
+    var sum = 0;
+    for(star in starArr){
+      sum += starArr[star];
+    }
+    var avg = sum / starArr.length;
+    setStar(avg);
+  });
+}
+function updateReviews(cust_name,date,review,stars){
+  //review (dont list more than 5)
+  var reviewBlock = '<div class="media" style="border-radius: 5px; padding: 10px; margin-bottom:10px; border: gray 2px solid;">';
+  reviewBlock +=    '  <div class="media-body review-div">';
+  reviewBlock +=    '    <h5 class="mt-0 review-author"></h5>';
+  reviewBlock +=    '  </div>';
+  reviewBlock +=    '</div>';
+    
+  var editBlock = $(reviewBlock);
+  editBlock.find(".review-author").html(cust_name);
+  editBlock.find(".review-div").append(review);
+  $(".restaurant-reviews").append(editBlock);
+}
+
+
+var info = {
+  HOURS:{
+    Mon: "XX:XX-XX:XX",
+    Tue: "XX:XX-XX:XX",
+    Wed: "XX:XX-XX:XX",
+    Thu: "XX:XX-XX:XX",
+    Fri: "XX:XX-XX:XX",
+    Sat: "XX:XX-XX:XX",
+    Sun: "XX:XX-XX:XX",
+  },
+  IMG_URL: ["images/restaurant1.jpg","sample.jpg"],
+  REST_BIO: "This is short description",
+  REST_NAME: "name here",
+  SAFETY_PROTOCOL: {
+    MASK_REQ: true,
+    MAX_CUST: 15,
+    TABLE_SPACE: 2
+  },
+  TRAITS: {
+    ONLINE_RESERVE: true,
+    TABLE_TRACK: true,
+    VARIFIED: true
+  }
+}
+//db.collection("restaurants").add(info);

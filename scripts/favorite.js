@@ -3,15 +3,25 @@ var custRef = db.collection("users").doc(uid);
 //setFavorite("bV9jtyMzI4Gu1kDdNYKb");
 
 $(document).ready(function(){
-  refreshFavList();
+  //if(loggedin){
+    refreshFavList();
+  //}
   
 });
 function refreshFavList(){
   $("#favorite-list").empty();
   getFavoriteRefs(uid).then(function(refList){
     getRestaurantsInfo(refList).then(function(infoList){
+      console.log(infoList);
       for(id in infoList){
-        writeCode(id,"restaurant.html?req="+id,infoList[id]["REST_NAME"],infoList[id]["IMG_URL"][0]);
+        var restID = infoList[id]["REST_ID"];
+        var storageRef = firebase.storage().ref().child("restaurants/"+restID);
+        var imgRef = storageRef.child(infoList[id]["IMG_URL"][0]);
+        console.log(imgRef);
+        imgRef.getDownloadURL().then(function(url){
+          console.log(url);
+          writeCode(id,"restaurant.html?req="+restID,infoList[id]["REST_NAME"],url);
+        });
       }
     });
   });
@@ -26,7 +36,7 @@ function writeCode(id,url,name,image){
   block +=    '    <div class="favorite-name">';
   block +=    '      '+name;
   block +=    '    </div>';
-  block +=    '    <a type="button" href="'+url+'#reserve-tab" class="favorite-reserve">';
+  block +=    '    <a type="button" href="'+url+'&tab=reserve-tab" class="favorite-reserve">';
   block +=    '      Reserve Now';
   block +=    '    </a>';
   block +=    '  </div>';
@@ -47,8 +57,6 @@ function deleteFavorite(id){
   db.collection("fav_restaurant").doc(id).delete();
   refreshFavList();
 }
-
-
 
 function getFavoriteRefs(uid){
   //if(loggedin){
@@ -77,7 +85,8 @@ function getRestaurantsInfo(refList){
     .then(function(doc){
       restsInfo[ref] = doc.data();
       if(count==length-1){
-        return deffer.resolve(restsInfo);
+        restsInfo[ref]["REST_ID"] = doc.id;
+        deffer.resolve(restsInfo);
       }
       count++;
     });
@@ -91,28 +100,6 @@ function setFavorite(restID){
     CUST_ID: custRef,
     REST_ID: restRef
   }
-  db.collection("fav_restaurant").add(table);
+  db.collection("fav_restaurant").doc(restID).set(table);
 }
 
-/* adding sample restaurant
-var info = {
-  HOURS:{
-    Mon: "XX:XX-XX:XX",
-    Tue: "XX:XX-XX:XX",
-    Wed: "XX:XX-XX:XX",
-    Thu: "XX:XX-XX:XX",
-    Fri: "XX:XX-XX:XX",
-    Sat: "XX:XX-XX:XX",
-    Sun: "XX:XX-XX:XX",
-  },
-  IMG_URL: ["images/restaurant1.jpg","sample.jpg"],
-  REST_BIO: "This is short description",
-  REST_NAME: "name here",
-  SAFETY_PROTOCOL: {
-    MASK_REQ: true,
-    MAX_CUST: 15,
-    TABLE_SPACE: 2
-  }
-}
-db.collection("restaurants").add(info);
-*/

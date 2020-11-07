@@ -19,8 +19,6 @@
   <!------------ CSS -------------->
   <!------------------------------->
 
-  <!-- homemade script -->
-  <script src="scripts/restaurant.js"></script>
   <!-- homemade css -->
   <link rel="stylesheet" href="styles/restaurant.css" />
 
@@ -116,12 +114,14 @@
   <!-- restaurant head starts -->
   <!---------------------------->
   <div class="restaurantHead">
-    <img class="restaurantImage" src="images/restaurant1.jpg" alt="Something Went Wrong...">
+    <img class="restaurantImage" src="images/restaurant.jpg" alt="Something Went Wrong...">
     <div class="restaurantImageBlur"></div>
+    <img class="setFav" type="button" src="images/favorite.png"
+          alt="something went wrong.">
     <div class="restaurantHeadInfo row">
       <div class="restaurantHeadLeft col">
         <div class="restaurantName">
-          NAME
+          
         </div>
         <div class="restaurantStars">
           <img class="star" id="star1" src="images/star.png">
@@ -170,8 +170,34 @@
       <!--------------------------------->
       <!-- Overview tab content starts -->
       <!--------------------------------->
-      <div class="row justify-content-sm-center">
-        <div class="col-md-7 col-sm-10 restaurant-pictures">
+      <div class="row justify-content-center">
+        
+
+        <div class="col-md-5 col-sm-11 restaurant-detail">
+          <span class="restaurant-section-title">Details:</span>
+          <div>
+            <div id="rest-address">
+              Address:
+            </div>
+            <div id="rest-phone">
+              Phone:
+            </div>
+            <div id="rest-email">
+              Email:
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-5 restaurant-bio">
+          <span class="restaurant-section-title">Bio:</span>
+        </div>
+
+        <div class="col-sm-5 col-md-4 restaurant-reviews">
+          <span class="restaurant-section-title">Reviews:</span>
+          
+        </div>
+
+        <div class="col-md-7 col-sm-11 restaurant-pictures">
           <span class="restaurant-section-title">Photos:</span>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -180,15 +206,7 @@
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/restaurant1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="images/restaurant1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="images/restaurant1.jpg" class="d-block w-100" alt="...">
-              </div>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -200,46 +218,6 @@
             </a>
           </div>
         </div>
-
-        <div class="col-md-4 col-sm-16 restaurant-detail">
-          <span class="restaurant-section-title">Details:</span>
-          <div>
-            <div>
-              Address:
-            </div>
-            <div>
-              Phone:
-            </div>
-            <div>
-              Email:
-            </div>
-          </div>
-        </div>
-        <br />
-
-        <div class="col restaurant-bio">
-          <span class="restaurant-section-title">Bio:</span>
-          The Metropolitan has been a staple in downtown Calgary since 2000. A central meeting place on bustling Stephen
-          Avenue, located in the business district of Calgary's downtown core. Great for lunch or dinner meetings in our
-          restaurant and after work cocktails in our large lounge where you can enjoy a lively Happy Hour every day of
-          the week! The Met also offers a versatile full service Private Dining Room for more intimate meeting or
-          parties.
-        </div>
-
-        <div class="col restaurant-reviews">
-          <span class="restaurant-section-title">Reviews:</span>
-          review
-          <br />
-          review
-          <br />
-          review
-          <br />
-          review
-          <br />
-          review
-          <br />
-          review
-        </div>
       </div>
       <!------------------------------->
       <!-- Overview tab content ends -->
@@ -249,80 +227,8 @@
       <!----------------------------->
       <!-- Menu tab content starts -->
       <!----------------------------->
-      <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Foods
-              </button>
-            </h2>
-          </div>
-
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body foods">
-              <ul>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
-                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Drinks
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="drinks card-body">
-              <ul>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
-                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Desserts
-              </button>
-            </h2>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="deserts card-body">
-              <ul>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="accordion" id="restaurantMenu">
+        
       </div>
       <!--------------------------->
       <!-- Menu tab content ends -->
@@ -373,11 +279,21 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+  <!-- Required if using firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+  <script src="scripts/firebase_api.js"></script>
+
   <script src="scripts/universal.js"></script> 
   <!------------------------------->  
   <!---- REQUIRED SECTION ENDS ---->
   <!------------- JS -------------->
   <!------------------------------->
+
+  <!-- homemade script -->
+  <script src="scripts/restaurant.js"></script>
 </body>
 
 </html>
