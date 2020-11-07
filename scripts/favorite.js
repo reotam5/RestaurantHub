@@ -11,18 +11,25 @@ $(document).ready(function(){
 function refreshFavList(){
   $("#favorite-list").empty();
   getFavoriteRefs(uid).then(function(refList){
-    getRestaurantsInfo(refList).then(function(infoList){
-      console.log(infoList);
+    getRestaurantsInfo(refList).then( async function(infoList){
+      
       for(id in infoList){
+        
         var restID = infoList[id]["REST_ID"];
         var storageRef = firebase.storage().ref().child("restaurants/"+restID);
         var imgRef = storageRef.child(infoList[id]["IMG_URL"][0]);
-        console.log(imgRef);
-        imgRef.getDownloadURL().then(function(url){
-          console.log(url);
+
+        await imgRef.getDownloadURL().then(function(url){
           writeCode(id,"restaurant.html?req="+restID,infoList[id]["REST_NAME"],url);
         });
       }
+    });
+  });
+}
+function getImgUrl(ref){
+  return new Promise(function(resolve) {
+    ref.getDownloadURL().then(function(url){
+      resolve(url);
     });
   });
 }
@@ -78,17 +85,13 @@ function getFavoriteRefs(uid){
 function getRestaurantsInfo(refList){
   var restsInfo = {};
   var deffer = $.Deferred();
-  var count = 0;
-  var length = Object.keys(refList).length;
+
   for (let ref in refList) {
     refList[ref].get()
     .then(function(doc){
       restsInfo[ref] = doc.data();
-      if(count==length-1){
-        restsInfo[ref]["REST_ID"] = doc.id;
-        deffer.resolve(restsInfo);
-      }
-      count++;
+      restsInfo[ref]["REST_ID"] = doc.id;
+      deffer.resolve(restsInfo);
     });
   }
   return deffer.promise();
