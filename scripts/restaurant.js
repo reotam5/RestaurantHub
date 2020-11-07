@@ -19,6 +19,7 @@ $(document).ready(function() {
     $("#"+tarTab).click()
   }
 
+
   checkFav();
   $(".setFav").on("click",function(event){
     setFav();
@@ -91,7 +92,6 @@ function listenRestaurant(restID){
     var traits = snap.data()["TRAITS"];
     var contact = snap.data()["CONTACT"];
     var menu = snap.data()["MENU"];
-    console.log(menu);
     updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,contact,menu);
   });
 }
@@ -160,7 +160,7 @@ function updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,conta
   menuBlock +=    '     </button>';
   menuBlock +=    '   </h2>';
   menuBlock +=    ' </div>';
-  menuBlock +=    ' <div class="collapse show" data-parent="#restaurantMenu">';
+  menuBlock +=    ' <div class="collapse" data-parent="#restaurantMenu">';
   menuBlock +=    '   <div class="card-body">';
   menuBlock +=    '     <ul>';
   menuBlock +=    '     </ul>';
@@ -230,6 +230,11 @@ function updateReviews(cust_name,date,review,stars){
 
 
 var info = {
+  CONTACT:{
+    ADRESS: "hello St",
+    EMAIL: "dummy@dum.com",
+    PHONE: "423-234-2341"
+  },
   HOURS:{
     Mon: "XX:XX-XX:XX",
     Tue: "XX:XX-XX:XX",
@@ -240,17 +245,48 @@ var info = {
     Sun: "XX:XX-XX:XX",
   },
   IMG_URL: ["images/restaurant1.jpg","sample.jpg"],
-  REST_BIO: "This is short description",
-  REST_NAME: "name here",
+  REST_BIO: "short description goes here",
+  REST_NAME: "Restaurant 2",
+  MENU: {
+    "Desert": {
+      sample1:"$1",
+      sample2:"$1",
+      sample3:"$1",
+      sample4:"$1",
+      sample5:"$1",
+    },
+    "Drink": {
+      sample1:"$1",
+      sample2:"$1",
+      sample3:"$1",
+      sample4:"$1",
+      sample5:"$1",
+    },
+    "Food": {
+      sample1:"$1",
+      sample2:"$1",
+      sample3:"$1",
+      sample4:"$1",
+      sample5:"$1",
+    },
+    "Something else": {
+      sample1:"$1",
+      sample2:"$1",
+      sample3:"$1",
+      sample4:"$1",
+      sample5:"$1",
+    },
+
+  },
   SAFETY_PROTOCOL: {
     MASK_REQ: true,
     MAX_CUST: 15,
     TABLE_SPACE: 2
   },
   TRAITS: {
-    ONLINE_RESERVE: true,
+    ONLINE_RESERVE: false,
     TABLE_TRACK: true,
-    VARIFIED: true
+    VARIFIED: false
   }
 }
 //db.collection("restaurants").add(info);
