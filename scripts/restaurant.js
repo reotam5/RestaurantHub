@@ -100,6 +100,15 @@ function listenRestaurant(restID){
 function updatePage(restID,name,bio,image,hours,safety,traits,contact,menu){
   var storageRef = firebase.storage().ref().child("restaurants/"+restID);
 
+  //hours
+  $(".days.mon").find(".hours").html(hours["Mon"]);
+  $(".days.tue").find(".hours").html(hours["Tue"]);
+  $(".days.wed").find(".hours").html(hours["Wed"]);
+  $(".days.thu").find(".hours").html(hours["Thu"]);
+  $(".days.fri").find(".hours").html(hours["Fri"]);
+  $(".days.sat").find(".hours").html(hours["Sat"]);
+  $(".days.sun").find(".hours").html(hours["Sun"]);
+
   //restaurant images 
   if(image.length > 0){
     var block = '<div class="carousel-item">';
