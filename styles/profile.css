@@ -1,0 +1,125 @@
+
+.content{
+  text-align: center;
+  background-color: lightblue;
+  height: 250px;
+}
+body{
+  margin-bottom: 30px;
+}
+#profile{
+  margin-top: 50px;
+  height: 150px;
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  box-shadow: 0px 3px 6px gray;
+  background-color: white;
+  position: relative;
+  z-index: 3;
+  transition: 0.5s;
+}
+#profile-img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  filter: invert(1);
+  border: gray 2px solid;
+  transform: translateY(-50%);
+  background-color: black;
+}
+#user-name{
+  color: black;
+  font-weight: bold;
+  width: fit-content;
+  margin: 0 auto;
+  transform: translateY(-100%);
+}
+#user-name img{
+  width: 20px;
+  height: 20px;
+}
+#profile-tab{
+  width: fit-content;
+  margin: 0 auto !important;
+  
+}
+#tab-content-wrapper{
+  background-color: white;
+  padding-top: 80px;
+  transform: translateY(-60px);
+  border-radius: 10px 10px 0px 0px;
+}
+.section-title{
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 20px;
+}
+.row{
+  width: 100% !important;
+  margin: 0;
+}
+.restaurant-section{
+  height: 150px;
+  padding: 0;
+  position: relative;
+}
+.restaurant-img{
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+.restaurant-img-blur{
+  height: 150px;
+  width: 100%;
+  transform: translateY(-100%);
+  border: white 3px solid;
+  background-color: rgba(49, 49, 49, 0.616);
+}
+.restaurant-overwrap{
+  position: absolute;
+  top: 0;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.restaurant-url{
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.restaurant-name{
+  color: white;
+  font-weight: bold;
+  font-size: 20pt;
+}
+.restaurant-reservation{
+  color: white;
+  font-size: 15pt;
+}
+.invis{
+  display: none;
+}
+.profile-transform{
+  height: 60px !important;
+  position: fixed !important;
+  top: 0;
+  width: 95% !important;
+  margin-left: 2.5% !important;
+  margin-right: 2.5% !important;
+}
+#profile ul{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translatex(-50%);
+}
+.ul-transform{
+  transform: translateY(15px);
+}

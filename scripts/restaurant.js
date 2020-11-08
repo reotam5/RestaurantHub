@@ -98,8 +98,13 @@ function listenRestaurant(restID){
 }
 
 function updatePage(restID,name,bio,image,hours,safety,traits,contact,menu){
-  var storageRef = firebase.storage().ref().child("restaurants/"+restID);
 
+  mask_req = "<div>Mask required: "+safety["MASK_REQ"]+"</div>";
+  table_space = "<div>Table spacing: "+safety["TABLE_SPACE"]+" m</div>";
+  max_cust = "<div>Max Customers at once: "+safety["MAX_CUST"]+"</div>";
+  $(".restaurant-safety-protocols").append(mask_req);
+  $(".restaurant-safety-protocols").append(table_space);
+  $(".restaurant-safety-protocols").append(max_cust);
   //hours
   $(".days.mon").find(".hours").html(hours["Mon"]);
   $(".days.tue").find(".hours").html(hours["Tue"]);
@@ -110,6 +115,7 @@ function updatePage(restID,name,bio,image,hours,safety,traits,contact,menu){
   $(".days.sun").find(".hours").html(hours["Sun"]);
 
   //restaurant images 
+  var storageRef = firebase.storage().ref().child("restaurants/"+restID);
   if(image.length > 0){
     var block = '<div class="carousel-item">';
     block +=    '  <img src="images/restaurant.jpg" class="d-block w-100" alt="...">';
