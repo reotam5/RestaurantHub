@@ -3,6 +3,9 @@
 /******************************************/
 var urlParams = new URLSearchParams(window.location.search);
 var restID = urlParams.get("req");
+if(restID == null){
+  alert("Enter reataurantID param(?req=restaurantID)(THIS ALERT IS FOR DEBUGGING PURPOSE)");
+}
 uid = "Ti1AGHZKdfhC7Wu2edpe";
 var custRef = db.collection("users").doc(uid);
 var restRef = db.collection("restaurants").doc(restID);
@@ -39,22 +42,18 @@ function setFav(){
   .get()
   .then(function(query){
     if(!query.empty){
+      $(".setFav").css("filter","invert(0.5)").attr("data-content","Click to set as a favorite");
       query.forEach(doc =>{
-        db.collection("fav_restaurant").doc(doc.id).delete()
-        .then(function(){
-          $(".setFav").css("filter","invert(0.5)").attr("data-content","Click to set as a favorite");
-        });
+        db.collection("fav_restaurant").doc(doc.id).delete();
       });
     }else{
+      $(".setFav").css("filter","invert(1)").attr("data-content","Click to remove from favorite");
       var favInfo = {
         CUST_ID: custRef,
         DATE: firebase.firestore.FieldValue.serverTimestamp(),
         REST_ID: restRef
       }
-      db.collection("fav_restaurant").add(favInfo)
-      .then(function(){
-        $(".setFav").css("filter","invert(1)").attr("data-content","Click to remove from favorite");
-      });
+      db.collection("fav_restaurant").add(favInfo);
     }
   });
 }

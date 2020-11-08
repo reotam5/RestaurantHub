@@ -139,6 +139,12 @@
   right: 0;
   margin: 10px;
 }
+.setFav:active{
+  width: 30px;
+  height: 30px;
+  transform: translate(-2.5px,2.5px);
+
+}
 
 .restaurant-hours{
   background-color: aliceblue;
