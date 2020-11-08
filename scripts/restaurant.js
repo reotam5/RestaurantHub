@@ -42,7 +42,7 @@ function setFav(){
       query.forEach(doc =>{
         db.collection("fav_restaurant").doc(doc.id).delete()
         .then(function(){
-          $(".setFav").css("filter","invert(0.5)");
+          $(".setFav").css("filter","invert(0.5)").attr("data-content","Click to set as a favorite");
         });
       });
     }else{
@@ -53,7 +53,7 @@ function setFav(){
       }
       db.collection("fav_restaurant").add(favInfo)
       .then(function(){
-        $(".setFav").css("filter","invert(1)");
+        $(".setFav").css("filter","invert(1)").attr("data-content","Click to remove from favorite");
       });
     }
   });
@@ -65,9 +65,9 @@ function checkFav(){
   .get()
   .then(function(query){
     if(!query.empty){
-      $(".setFav").css("filter","invert(1)");
+      $(".setFav").css("filter","invert(1)").attr("data-content","Click to remove from favorite");
     }else{
-      $(".setFav").css("filter","invert(0.5)");
+      $(".setFav").css("filter","invert(0.5)").attr("data-content","Click to set as a favorite");
     }
   });
 }
@@ -86,33 +86,27 @@ function listenRestaurant(restID){
   .onSnapshot(function(snap){
     var name = snap.data()["REST_NAME"];
     var bio = snap.data()["REST_BIO"];
-    var [bigImage , ...restImage] = snap.data()["IMG_URL"];
+    var image = snap.data()["IMG_URL"];
     var hours = snap.data()["HOURS"];
     var safety = snap.data()["SAFETY_PROTOCOL"];
     var traits = snap.data()["TRAITS"];
     var contact = snap.data()["CONTACT"];
     var menu = snap.data()["MENU"];
-    updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,contact,menu);
+    updatePage(restID,name,bio,image,hours,safety,traits,contact,menu);
   });
 }
 
-function updatePage(restID,name,bio,bigImage,restImage,hours,safety,traits,contact,menu){
+function updatePage(restID,name,bio,image,hours,safety,traits,contact,menu){
   var storageRef = firebase.storage().ref().child("restaurants/"+restID);
 
-  //main image
-  var imgRef = storageRef.child(bigImage);
-  imgRef.getDownloadURL().then(function(url){
-    $("img.restaurantImage").attr("src",url);
-  });
-
   //restaurant images 
-  if(restImage.length > 0){
+  if(image.length > 0){
     var block = '<div class="carousel-item">';
     block +=    '  <img src="images/restaurant.jpg" class="d-block w-100" alt="...">';
     block +=    '</div>';
     var is_first = true;
-    for(url in restImage){
-      var targetUrl = restImage[url];
+    for(url in image){
+      var targetUrl = image[url];
       var imgRef = storageRef.child(targetUrl);
       imgRef.getDownloadURL().then(function(url){
         if(is_first){

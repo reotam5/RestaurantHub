@@ -2,7 +2,7 @@
  * This supports universal components. EX) header, slide bar...
  ************************************************************************/
 //enabling loading screen
-$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
+//$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
 
 $(document).ready(function() {
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
   /**************************/
 
   //Disabling loading acreen
-  $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
+//$('body').children().filter(".loading-bg").delay(900).fadeOut(800);  
 });
 
 var loggedin = false;

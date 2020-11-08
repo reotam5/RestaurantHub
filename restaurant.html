@@ -113,11 +113,15 @@
   <!---------------------------->
   <!-- restaurant head starts -->
   <!---------------------------->
-  <div class="restaurantHead">
-    <img class="restaurantImage" src="images/restaurant.jpg" alt="Something Went Wrong...">
+  <div class="restaurantHead carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+
+    </div>
+    
     <div class="restaurantImageBlur"></div>
     <img class="setFav" type="button" src="images/favorite.png"
-          alt="something went wrong.">
+          alt="something went wrong." data-toggle="popover" data-trigger="hover" title="Favorite"
+          data-content="Click to set as a favorite">
     <div class="restaurantHeadInfo row">
       <div class="restaurantHeadLeft col">
         <div class="restaurantName">
@@ -133,13 +137,13 @@
       </div>
       <div class="restaurantHeadRight col">
         <img tabindex="0" class="reserveIcon btn-outline-secondary" role="button" src="images/calendar.png"
-          alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Reservation"
+          alt="something went wrong." data-toggle="popover" data-trigger="click hover" title="Reservation"
           data-content="This restaurant allowes online reservations.">
         <img tabindex="0" class="tableTracker btn-outline-secondary" role="button" src="images/tableTracker.png"
-          alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Table Tracker"
+          alt="something went wrong." data-toggle="popover" data-trigger="click hover" title="Table Tracker"
           data-content="This restaurant has real-time table tracker.">
         <img tabindex="0" class="verifiedHours btn-outline-secondary" role="button" src="images/verifiedHours.png"
-          alt="something went wrong." data-toggle="popover" data-trigger="focus" title="Verified Hours"
+          alt="something went wrong." data-toggle="popover" data-trigger="click hover" title="Verified Hours"
           data-content="This restaurant has verified their operation hours.">
       </div>
     </div>
@@ -170,10 +174,10 @@
       <!--------------------------------->
       <!-- Overview tab content starts -->
       <!--------------------------------->
-      <div class="row justify-content-center">
+      <div class="row">
         
 
-        <div class="col-md-5 col-sm-11 restaurant-detail">
+        <div class="col-12 col-sm-4 col-md-4 restaurant-detail">
           <span class="restaurant-section-title">Details:</span>
           <div>
             <div id="rest-address">
@@ -187,37 +191,28 @@
             </div>
           </div>
         </div>
+        <div class="col-12 col-sm-4 col-md-4 restaurant-hours">
+          <span class="restaurant-section-title">Hours:</span>
+          <div class="operation_hours">
+            <div class="days">Mon: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Tue: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Wed: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Thu: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Fri: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Sat: <span class="hours">XX:XX-XX:XX</span></div>
+            <div class="days">Sun: <span class="hours">XX:XX-XX:XX</span></div>
+          </div>
+        </div>
 
-        <div class="col-md-6 col-sm-5 restaurant-bio">
+        <div class="col-12 col-sm-4 col-md-4 restaurant-bio">
           <span class="restaurant-section-title">Bio:</span>
         </div>
 
-        <div class="col-sm-5 col-md-4 restaurant-reviews">
+        <div class="col-12 col-sm-12 col-md-12 restaurant-reviews">
           <span class="restaurant-section-title">Reviews:</span>
           
         </div>
 
-        <div class="col-md-7 col-sm-11 restaurant-pictures">
-          <span class="restaurant-section-title">Photos:</span>
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
       </div>
       <!------------------------------->
       <!-- Overview tab content ends -->

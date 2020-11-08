@@ -85,24 +85,15 @@
 }
 .restaurant-bio{
   background-color: aliceblue; 
-  border-radius: 10px;
-  margin: 10px;
+  border: white 2px solid;
 }
 .restaurant-detail{
   background-color: aliceblue; 
-  border-radius: 10px;
-  margin: 10px;
-}
-
-.restaurant-pictures{
-  background-color: aliceblue; 
-  border-radius: 10px;
-  margin: 10px;
+  border: white 2px solid;
 }
 .restaurant-reviews{
   background-color: aliceblue; 
-  border-radius: 10px;
-  margin: 10px;
+  border: white 2px solid;
 }
 .reserve-date-div{
   height: 100px;
@@ -134,7 +125,8 @@
 }
 
 .carousel-item img{
-  height: 50vw !important;
+  max-width: 100vw !important;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -146,4 +138,9 @@
   top: 60px;
   right: 0;
   margin: 10px;
+}
+
+.restaurant-hours{
+  background-color: aliceblue;
+  border: white 2px solid;
 }

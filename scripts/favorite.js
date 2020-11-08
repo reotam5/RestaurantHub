@@ -1,14 +1,17 @@
 uid = "Ti1AGHZKdfhC7Wu2edpe";
 var custRef = db.collection("users").doc(uid);
-//setFavorite("bV9jtyMzI4Gu1kDdNYKb");
 
 $(document).ready(function(){
+  $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
   //if(loggedin){
-    refreshFavList();
+    refreshFavList().then(function(){
+      $('body').children().filter(".loading-bg").delay(900).fadeOut(800); 
+    });
   //}
   
 });
 function refreshFavList(){
+  var deffer = $.Deferred();
   $("#favorite-list").empty();
   getFavoriteRefs(uid).then(function(refList){
     getRestaurantsInfo(refList).then( async function(infoList){
@@ -23,8 +26,10 @@ function refreshFavList(){
           writeCode(id,"restaurant.html?req="+restID,infoList[id]["REST_NAME"],url);
         });
       }
+      deffer.resolve();
     });
   });
+  return deffer.promise();
 }
 function getImgUrl(ref){
   return new Promise(function(resolve) {
@@ -96,13 +101,5 @@ function getRestaurantsInfo(refList){
   }
   return deffer.promise();
 }
-function setFavorite(restID){
-  var restRef = db.collection("restaurants").doc(restID)
-  var table = {
-    DATE: firebase.firestore.FieldValue.serverTimestamp(),
-    CUST_ID: custRef,
-    REST_ID: restRef
-  }
-  db.collection("fav_restaurant").doc(restID).set(table);
-}
+
 
