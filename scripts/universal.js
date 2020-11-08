@@ -55,3 +55,29 @@ firebase.auth().onAuthStateChanged(function(me) {
     loggedin = false;
   }
 });
+
+
+function signInPrompt(){
+  block =  '<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+  block += '  <div class="modal-dialog modal-dialog-centered">';
+  block += '    <div class="modal-content">';
+  block += '      <div class="modal-header">';  
+  block += '        <h5 class="modal-title" id="signinLabel">Signed-in users only</h5>';
+  block += '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+  block += '          <span aria-hidden="true">&times;</span>';
+  block += '        </button>';  
+  block += '      </div>';  
+  block += '    <div class="modal-body">';  
+  block += '      Please Sign In first';  
+  block += '    </div>';  
+  block += '    <div class="modal-footer">';  
+  block += '      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';  
+  block += '      <button type="button" class="btn btn-primary"><a href="login.html" style="display: block; color:black;">Sign-In / Sign-up</a></button>';  
+  block += '    </div>';  
+  block += '   </div>';  
+  block += '  </div>';  
+  block += '</div>';  
+
+  $("body").append(block);
+  $("#signinModal").modal('toggle');
+}

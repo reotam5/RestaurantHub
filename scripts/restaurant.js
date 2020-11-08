@@ -32,6 +32,8 @@ $(document).ready(function() {
   listenRestaurant(restID);
 
   listenReviews(restID);
+
+  //signInPrompt();
 });
 
 function setFav(){
