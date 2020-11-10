@@ -50,7 +50,7 @@ $(document).ready(function(){
       for(imgUrl in imgArr){
         // Create a root reference
         var storageRef = firebase.storage().ref();
-        // Create a reference to 'images/mountains.jpg'
+
         var imgRef = storageRef.child("restaurants/"+restaurantID+'/'+imgArr[imgUrl]);
 
         await imgRef.put(files[imgUrl]);

@@ -28,15 +28,17 @@ body{
   border: gray 2px solid;
   transform: translateY(-50%);
   background-color: black;
+  object-fit: contain;
 }
-#user-name{
+.user-name{
+  display: block;
   color: black;
   font-weight: bold;
   width: fit-content;
   margin: 0 auto;
-  transform: translateY(-100%);
+  transform: translateY(-105%);
 }
-#user-name img{
+.user-name img{
   width: 20px;
   height: 20px;
 }
