@@ -38,7 +38,7 @@
   width: 40px;
   height: 100%;
 }
-.siteHead a[class="shoppingCart"]{
+.siteHead a[class="profile"]{
   margin-right: 20px;
   width: 50px;
   height: 100%;
@@ -84,7 +84,7 @@
   align-items: center;
   width: 50px;
 }
-.siteHead .shoppingCartDiv{
+.siteHead .profileDiv{
   height: 100%;
   display: flex;
   justify-content: center;
@@ -178,7 +178,7 @@ div.openNav {
   height: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-bottom: 10px;
 }
