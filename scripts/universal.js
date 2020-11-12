@@ -43,6 +43,18 @@ $(document).ready(function() {
 //$('body').children().filter(".loading-bg").delay(900).fadeOut(800);  
 });
 
+// var loggedin = false;
+// var user;
+
+// firebase.auth().onAuthStateChanged(function(me) {
+//   if (me) {
+//     user = me;
+//     loggedin = true;
+//   } else {
+//     user = null;
+//     loggedin = false;
+//   }
+// });
 
 /************************************/
 /* Check status of logged in or not */
@@ -69,7 +81,7 @@ initApp = function() {
       // var providerData = user.providerData;
       user.getIdToken().then(function(accessToken) {
         document.getElementById('sign-in-status').textContent = 'Signed in';
-        document.getElementById('sign-in').textContent = 'Sign out';
+        $(".sign-in").text("Sign out");
         document.getElementById('account-details').textContent = JSON.stringify({
           displayName: displayName,
           email: email,
