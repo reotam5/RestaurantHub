@@ -71,10 +71,8 @@ initApp = function() {
       var uid = user.uid;
       var phoneNumber = user.phoneNumber;
       // var providerData = user.providerData;
+      $(".sign-in-status").text("logout");
       user.getIdToken().then(function(accessToken) {
-        if(document.getElementById('sign-in-status') != null){
-          document.getElementById('sign-in-status').textContent = 'Sign out';
-        }
         $(".sign-in").text("Sign out");
         if(document.getElementById('account-details') != null){
           document.getElementById('account-details').textContent = JSON.stringify({
@@ -91,12 +89,7 @@ initApp = function() {
       });
     } else {
       // User is signed out.
-      if(document.getElementById('sign-in-status') != null){
-        document.getElementById('sign-in-status').textContent = 'Sign in';
-      }
-      if(document.getElementById('account-details') != null){
-        document.getElementById('account-details').textContent = 'null';
-      }
+      $(".sign-in-status").text("login");
       $(".sign-in").text("Sign in");
     }
   }, function(error) {
@@ -108,7 +101,7 @@ window.addEventListener('load', function() {
   initApp()
 });
 
-$("#sign-out-button").click(function() {
+$(".sign-out-button").click(function() {
     var user = firebase.auth().currentUser;
     // is there is a user signed in
     if (user) {
