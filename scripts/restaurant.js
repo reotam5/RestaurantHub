@@ -5,15 +5,32 @@ var urlParams = new URLSearchParams(window.location.search);
 var restID = urlParams.get("req");
 if(restID == null){
   alert("Enter reataurantID param(?req=restaurantID)(THIS ALERT IS FOR DEBUGGING PURPOSE)");
+}else{
+  var restRef = db.collection("restaurants").doc(restID);
 }
-uid = "Ti1AGHZKdfhC7Wu2edpe";
-var custRef = db.collection("users").doc(uid);
-var restRef = db.collection("restaurants").doc(restID);
 
 
 $(document).ready(async function() {
   //enable loading screen
   loadingEnable();
+  var uid;
+  await firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var uid = user.uid;
+      var custRef = db.collection("users").doc(uid);
+      //check if the restaurant is in favorite list
+      checkFav(custRef);
+      //toggle farovite on click
+      $(".setFav").on("click",function(event){
+        toggleFav(custRef);
+      });
+    } else {
+      $(".setFav").on("click",function(event){
+        signInPrompt();
+      });
+    }
+  });
+  
 
   //enable boostrap popover
   $('[data-toggle="popover"]').popover();
@@ -32,12 +49,7 @@ $(document).ready(async function() {
   //updating html
   restaurant.updatePage();
 
-  //check if the restaurant is in favorite list
-  checkFav();
-  //toggle farovite on click
-  $(".setFav").on("click",function(event){
-    toggleFav();
-  });
+  
 
   //listner for reviews and stars
   listenReviews(restaurant);
@@ -47,7 +59,7 @@ $(document).ready(async function() {
   //signInPrompt();
 });
 
-function toggleFav(){
+function toggleFav(custRef){
 
   db.collection("fav_restaurant")
   .where("CUST_ID","==", custRef)
@@ -70,7 +82,7 @@ function toggleFav(){
     }
   });
 }
-function checkFav(){
+function checkFav(custRef){
   db.collection("fav_restaurant")
   .where("CUST_ID","==", custRef)
   .where("REST_ID","==",restRef)

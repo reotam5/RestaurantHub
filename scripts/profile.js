@@ -1,6 +1,20 @@
 $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-var uid = "Ti1AGHZKdfhC7Wu2edpe";
-var custRef = db.collection("users").doc(uid);
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var uid = user.uid;
+    var custRef = db.collection("users").doc(uid);
+    refreshFavList(custRef).then(function(){
+      $('body').children().filter(".loading-bg").delay(900).fadeOut(800); 
+    });
+    loadingDisable();
+  } else {
+    signInPrompt();
+    loadingDisable();
+    window.location.href = "login.html?url="+window.location.href;
+  }
+});
+
 $(document).ready(function(){
   $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
   

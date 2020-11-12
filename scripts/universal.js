@@ -59,15 +59,7 @@ $(document).ready(function() {
 /************************************/
 /* Check status of logged in or not */
 /************************************/
-function isLoggedin(){
-  firebase.auth().onAuthStateChanged(function(me) {
-    if (me) {
-      return me
-    } else {
-      return null;
-    }
-  });
-}
+
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {

@@ -1,19 +1,26 @@
-uid = "Ti1AGHZKdfhC7Wu2edpe";
-var custRef = db.collection("users").doc(uid);
 
 $(document).ready(function(){
+
   $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-  //if(loggedin){
-    refreshFavList().then(function(){
-      $('body').children().filter(".loading-bg").delay(900).fadeOut(800); 
-    });
-  //}
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var uid = user.uid;
+      var custRef = db.collection("users").doc(uid);
+      refreshFavList(custRef).then(function(){
+        $('body').children().filter(".loading-bg").delay(900).fadeOut(800); 
+      });
+      loadingDisable();
+    } else {
+      signInPrompt();
+      loadingDisable();
+    }
+  });
   
 });
-function refreshFavList(){
+function refreshFavList(ref){
   var deffer = $.Deferred();
   $("#favorite-list").empty();
-  getFavoriteRefs(uid).then(function(refList){
+  getFavoriteRefs(ref).then(function(refList){
     getRestaurantsInfo(refList).then( async function(infoList){
       
       for(id in infoList){
@@ -63,11 +70,11 @@ function deleteFavorite(id){
   refreshFavList();
 }
 
-function getFavoriteRefs(uid){
+function getFavoriteRefs(ref){
   //if(loggedin){
     var restList = {};
     var deffer = $.Deferred();
-    db.collection("fav_restaurant").where("CUST_ID","==",custRef)
+    db.collection("fav_restaurant").where("CUST_ID","==",ref)
     .get()
     .then(function(multiple){
       multiple.forEach(doc => {
