@@ -133,12 +133,15 @@ function signInPrompt(){
   block += '    </div>';  
   block += '    <div class="modal-footer">';  
   block += '      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';  
-  block += '      <button type="button" class="btn btn-primary"><a href="login.html" style="display: block; color:black;">Sign-In / Sign-up</a></button>';  
+  block += '      <button type="button" class="btn btn-primary"><a style="display: block; color:black;">Sign-In / Sign-up</a></button>';  
   block += '    </div>';  
   block += '   </div>';  
   block += '  </div>';  
   block += '</div>';  
+  console.log($(block).filter(".modal-footer"));
+  block = $(block)
 
   $("body").append(block);
+  $(".modal-footer").find("a").attr("href","login.html?url="+window.location.href);
   $("#signinModal").modal('toggle');
 }

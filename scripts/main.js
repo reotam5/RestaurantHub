@@ -53,6 +53,7 @@ function createPanel(id, name, img, reserve, tracker, verified, hours) {
   let x = ".restaurant-panel-" + id;
   $(x + " .restaurant-image > img").attr("src", img).attr("alt", "the-keg");
   $(x + " .restaurant-name").append(name);
+  $(x + " .restaurant-image").append($("<a href='restaurant.html?req="+id+"'></a>").css("display","block").css("height","100%").css("width","90%").css("transform","translateY(-100%)"));
   if (reserve == true) {
     $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/calendar.png\"/>")
   }

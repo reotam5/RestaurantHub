@@ -11,12 +11,12 @@ var uiConfig = {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
       var user = authResult.user;
       if (authResult.additionalUserInfo.isNewUser) {
-        db.collection("users").add({
+        db.collection("users").doc(user.uid).set({
           EMAIL: user.email,
           NAME: user.displayName
         }).then(function() {
           console.log("New user added to firestore.");
-         
+          window.location.href = targetUrl;
         }).catch(function (error) {
           console.log("Error adding new user: " + error); 
         })
