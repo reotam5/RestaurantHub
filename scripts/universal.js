@@ -88,7 +88,6 @@ initApp = function() {
       // User is signed out.
       document.getElementById('sign-in-status').textContent = 'Signed out';
       $(".sign-in").text("Sign in");
-      document.getElementById('account-details').textContent = 'null';
     }
   }, function(error) {
     console.log(error);
