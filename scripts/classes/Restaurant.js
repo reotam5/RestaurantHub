@@ -4,8 +4,16 @@ class Restaurant{
     this.ref = db.collection("restaurants").doc(this.REST_ID);
   }
 
+  updateListner(){
+    var that = this;
+    var snap = this.ref.onSnapshot(async function(snap){
+      await that.updateVariables();
+      that.updatePage();
+    });
+  }
+
   //update instance variables
-  async updateVariables(initOnly){
+  async updateVariables(){
     await this.ref.get().then(doc =>{
       //updates instance variables
       this.REST_NAME = doc.data()["REST_NAME"];
@@ -30,10 +38,11 @@ class Restaurant{
     var contact = this.CONTACT;
     var menu = this.MENU;
 
+
     var mask_req = "<div>Mask required: "+safety["MASK_REQ"]+"</div>";
     var table_space = "<div>Table spacing: "+safety["TABLE_SPACE"]+" m</div>";
     var max_cust = "<div>Max Customers at once: "+safety["MAX_CUST"]+"</div>";
-    $(".restaurant-safety-protocols").append(mask_req);
+    $(".restaurant-safety-protocols").empty().append(mask_req);
     $(".restaurant-safety-protocols").append(table_space);
     $(".restaurant-safety-protocols").append(max_cust);
     //hours
@@ -66,19 +75,23 @@ class Restaurant{
           $(".carousel-inner").append(carousel);
         });
       }
-    }else{
-      $(".restaurant-pictures").remove();
     }
     
     //traits
     if(!traits["ONLINE_RESERVE"]){
-      $("img.reserveIcon").remove();
+      $("img.reserveIcon").css("display","none");
+    }else{
+      $("img.reserveIcon").css("display","inline-block");
     }
     if(!traits["TABLE_TRACK"]){
-      $("img.tableTracker").remove();
+      $("img.tableTracker").css("display","none");
+    }else{
+      $("img.tableTracker").css("display","inline-block");
     }
-    if(!traits["VARIFIED"]){
-      $("img.verifiedHours").remove();
+    if(!traits["VERIFIED"]){
+      $("img.verifiedHours").css("display","none");
+    }else{
+      $("img.verifiedHours").css("display","inline-block");
     }
   
     //name
@@ -90,7 +103,7 @@ class Restaurant{
     $("#rest-phone").html("Phone:&nbsp;"+contact["PHONE"]);
   
     //bio
-    $(".restaurant-bio").append(bio)
+    $(".restaurant-bio").empty().append(bio)
   
     //menu
     var menuBlock = '<div class="card">';
@@ -109,7 +122,7 @@ class Restaurant{
     menuBlock +=    ' </div>';
     menuBlock +=    '</div>';
   
-    
+    $("#restaurantMenu").empty();
     for(let category in menu){
       var editBlock = $(menuBlock);
       

@@ -46,9 +46,8 @@ $(document).ready(async function() {
   //await so until all instance variables are ready to use.
   await restaurant.updateVariables(false);
 
-  //updating html
-  restaurant.updatePage();
-
+  //listen to changes and updates html
+  restaurant.updateListner();
   
 
   //listner for reviews and stars

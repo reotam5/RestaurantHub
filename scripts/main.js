@@ -32,7 +32,7 @@ $(document).ready(function () {
       var traits = doc.get("TRAITS");
       var reserve = traits["ONLINE_RESERVE"];
       var tracker = traits["TABLE_TRACK"];
-      var verified = traits["TABLE_SPACE"];
+      var verified = traits["VERIFIED"];
 
       var hours = doc.get("HOURS");
       let listHours = "<p>Monday - " + hours["Mon"] + "</p>" +

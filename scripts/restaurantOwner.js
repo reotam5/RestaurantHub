@@ -28,7 +28,7 @@ $(document).ready(function(){
       TRAITS: {
         ONLINE_RESERVE: "true" == $("#restaurant-online-reserve").parent().parent().find("select").val(),
         TABLE_TRACK: "true" == $("#restaurant-table-track").parent().parent().find("select").val(),
-        TABLE_SPACE: "true" == $("#restaurant-verified").parent().parent().find("select").val(),
+        VERIFIED: "true" == $("#restaurant-verified").parent().parent().find("select").val(),
       },
       MENU: JSON.parse($(".restaurant-menu").val()),
       IMG_URL: imgArr,
