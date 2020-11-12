@@ -21,11 +21,11 @@
 
   <!-- homemade css -->
   <link rel="stylesheet" href="styles/restaurant.css" />
+  <link rel="stylesheet" href="styles/loading.css" />
 
 </head>
 
 <body>
-
   <!------------------->
   <!-- header starts -->
   <!------------------->
@@ -39,9 +39,9 @@
         <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
       </div>
     </a>
-    <a href="shoppingCart" class="shoppingCart">
-      <div class="shoppingCartDiv">
-        <img class="shoppingCart" src="images/shoppingCart.png" alt="shoppingCart"/>
+    <a href="profile.html" class="profile">
+      <div class="profileDiv">
+        <img class="profile" src="images/person.png" alt="profile" style="filter: invert(1);"/>
       </div>
     </a>
   </header>
@@ -86,22 +86,16 @@
     </div>
 
     <div class="slideFooter">
-      <a href="notification.html">
-        <div class="slideFooterItems notification">
-          <img class="notification" src="images/notification.png" alt="notification">
-          Notification
-        </div>
-      </a>
       <a href="profile.html">
         <div class="slideFooterItems myProfile">
           <img class="myProfile" src="images/person.png" alt="myProfile">
           Profile
         </div>
       </a>
-      <a href="setting.html">
+      <a href="#" id="sign-out-button">
         <div class="slideFooterItems setting">
-          <img class="setting" src="images/setting.png" alt="setting">
-          Setting
+          <img class="setting" src="images/login.png" alt="login">
+          <span id="sign-in-status">Login/Logout</span>
         </div>
       </a>
     </div>
@@ -264,6 +258,17 @@
   <!-- tab ends -->
   <!-------------->
 
+  <!-- This is temporary loading screen. -->
+  <!-- Add loading div with class name ".loading-bg" and it will apear in page. -->
+  <div class="loading-bg">
+    <div class="wrapper">
+    <img class="siteLogo" src="images/logo.png" alt="restaurant-hub"/>
+    <h1>Restaurant Hub</h1>
+    <img class="location blink" src="images/location.png" alt="location-icon"/>
+    <p class="searching blink">Getting ready.....</p>
+  </div>
+  </div>
+
 
   <!------------------------------->  
   <!--- REQUIRED SECTION STARTS --->
@@ -293,7 +298,10 @@
   <!------------------------------->
 
   <!-- homemade script -->
+  <script src="scripts/loading.js"></script>
+  <script src="scripts/classes/Restaurant.js"></script>
   <script src="scripts/restaurant.js"></script>
+
 </body>
 
 </html>

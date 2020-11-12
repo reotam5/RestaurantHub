@@ -59,6 +59,15 @@ $(document).ready(function() {
 /************************************/
 /* Check status of logged in or not */
 /************************************/
+function isLoggedin(){
+  firebase.auth().onAuthStateChanged(function(me) {
+    if (me) {
+      return me
+    } else {
+      return null;
+    }
+  });
+}
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -71,22 +80,31 @@ initApp = function() {
       var phoneNumber = user.phoneNumber;
       // var providerData = user.providerData;
       user.getIdToken().then(function(accessToken) {
-        document.getElementById('sign-in-status').textContent = 'Signed in';
+        if(document.getElementById('sign-in-status') != null){
+          document.getElementById('sign-in-status').textContent = 'Sign out';
+        }
         $(".sign-in").text("Sign out");
-        document.getElementById('account-details').textContent = JSON.stringify({
-          displayName: displayName,
-          email: email,
-          // emailVerified: emailVerified,
-          phoneNumber: phoneNumber,
-          // photoURL: photoURL,
-          uid: uid,
-          accessToken: accessToken,
-          // providerData: providerData
-        }, null, '  ');
+        if(document.getElementById('account-details') != null){
+          document.getElementById('account-details').textContent = JSON.stringify({
+            displayName: displayName,
+            email: email,
+            // emailVerified: emailVerified,
+            phoneNumber: phoneNumber,
+            // photoURL: photoURL,
+            uid: uid,
+            accessToken: accessToken,
+            // providerData: providerData
+          }, null, '  ');
+        }
       });
     } else {
       // User is signed out.
-      document.getElementById('sign-in-status').textContent = 'Signed out';
+      if(document.getElementById('sign-in-status') != null){
+        document.getElementById('sign-in-status').textContent = 'Sign in';
+      }
+      if(document.getElementById('account-details') != null){
+        document.getElementById('account-details').textContent = 'null';
+      }
       $(".sign-in").text("Sign in");
     }
   }, function(error) {
@@ -109,7 +127,7 @@ $("#sign-out-button").click(function() {
       })
       // if user is signed out
     } else {
-      window.location.href = "login.html" ;
+      window.location.href = "login.html";
     }
 });
 

@@ -31,13 +31,6 @@ function refreshFavList(){
   });
   return deffer.promise();
 }
-function getImgUrl(ref){
-  return new Promise(function(resolve) {
-    ref.getDownloadURL().then(function(url){
-      resolve(url);
-    });
-  });
-}
 
 function writeCode(id,url,name,image){
   var block = '<div class="favorite-content col-sm-12 col-md-6" id="favorite-'+id+'">';
