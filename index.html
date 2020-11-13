@@ -1,10 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Restaurant Hub</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="RKC" />
+  <meta name="description" content="Restaurant Hub" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!------------------------------->  
   <!--- REQUIRED SECTION STARTS --->
@@ -17,11 +19,11 @@
   <!------------ CSS -------------->
   <!------------------------------->
 
-
-  <title>Hub Home</title>
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 
 <body>
+
   <!------------------->
   <!-- header starts -->
   <!------------------->
@@ -61,7 +63,7 @@
     <div class="slideContent">
       <ul>
         <li>
-          <a href="main.html">
+          <a href="index.html">
             <img src="images/home.png" alt="home" style="filter: invert(1);">
             Home
           </a>
@@ -99,51 +101,103 @@
   <!-------------------->
   <!-- slide bar ends -->
   <!-------------------->
-  
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
+  <!-------------------->
+  <!-- content starts -->
+  <!-------------------->
+  <div class="wrapper">
 
-        <div class="card" style="width: 18rem;">
-          <img src="images/picture1.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Restaurants near you</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-------------------->
+    <!-- Search Bar -->
+    <!-------------------->
+    <nav class="fixed-head navbar navbar-light bg-light justify-content-center">
+      <a class="navbar-brand"></a>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Find something specific..." aria-label="Search">
+        <button class="btn btn-outline-success btn-sm" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
+            class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+          </svg></button>
+        <button type="button" class="btn btn-outline-dark btn-sm" id="button2" data-toggle="modal"
+          data-target="#filterModal"><svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-filter"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+          </svg></button>
+          <div class="dropdown">
+            <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort By
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" id= "sortby1" type="button">Price (Low to High)</button>
+              <button class="dropdown-item" id= "sortby2" type="button">Rating</button>
+              <button class="dropdown-item" type="button" id="sortby3">Table Availability</button>
+            </div>
+          </div>
+
+      </form>
+    </nav>
+    <!----Filter Modal Pop Up---->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Requires Mask
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+              <label class="form-check-label" for="defaultCheck2">
+                Has Table Tracker Feature
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light">Return Defaults</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success">Apply</button>
           </div>
         </div>
-
-      </div>
-      <div class="col-sm">
-
-        <div class="card" style="width: 18rem;">
-          <img src="images/picture2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Reserve restaurants</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-sm">
-
-        <div class="card" style="width: 18rem;">
-          <img src="images/picture3.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Contacts us</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
       </div>
     </div>
+  
+    
+
+    <!--------------------->
+    <!-- Restaurant Info -->
+    <!--------------------->
+    <!-- Can use javascript to add to this -->
+    <div class="restaurant-info">
+      <div class="restaurant-image" style="width:100%; height: 100%;position: ;">
+        <div class="restaurantStars">
+          <img class="star" id="star1" src="images/star.png"/>
+        </div>
+        <img src="" alt=""/>
+        <p class="restaurant-name"></p>
+      </div>
+      <div class="restaurant-details">
+        <div class="restaurant-icons"></div>
+        <div class="hours"></div>
+      </div>
+    </div>
+
   </div>
+  <!------------------>
+  <!-- content ends -->
+  <!------------------>
+
 
   <!------------------------------->  
   <!--- REQUIRED SECTION STARTS --->
@@ -171,6 +225,9 @@
   <!---- REQUIRED SECTION ENDS ---->
   <!------------- JS -------------->
   <!------------------------------->
+
+
+  <script src="scripts/main.js"></script>
 
 </body>
 
