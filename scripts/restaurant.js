@@ -3,11 +3,15 @@
 /******************************************/
 var urlParams = new URLSearchParams(window.location.search);
 var restID = urlParams.get("req");
+var form = document.querySelector("#reservation");
 if(restID == null){
   alert("Enter reataurantID param(?req=restaurantID)(THIS ALERT IS FOR DEBUGGING PURPOSE)");
 }else{
   var restRef = db.collection("restaurants").doc(restID);
+
+
 }
+
 
 
 $(document).ready(async function() {
@@ -56,7 +60,24 @@ $(document).ready(async function() {
   //loading screen disabled.
   loadingDisable();
   //signInPrompt();
+
+//writing reservations
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  db.collection("reservations").add({
+    DATE: form.date.FieldValue,
+    TIME: form.time.FieldValue
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
 });
+})
+
+});
+
 
 function toggleFav(custRef){
 
@@ -144,6 +165,9 @@ function setStar(stars){
     $(".restaurantStars").children().filter("img").attr("src","images/star.png");
     for(i = 0; i <= stars; i++){
       $("#star"+i).attr("src","images/darkStar.png");
+
+
+
     }
   }
 }
