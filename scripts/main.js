@@ -51,6 +51,7 @@ $(document).ready(function () {
         });
     }else{
       keywords.forEach(async word =>{
+        console.log(word);
         var targetQuery = query.where(`tokenMap.${word}`, "==", true);
         var docQuery = await targetQuery.get();
         docQuery.forEach(doc =>{
@@ -101,6 +102,7 @@ function triGram(word){
   var words = word.toLowerCase().trim().split(" ");
   for(key in words){
     var length = words[key].length;
+    arr.push(words[key]);
     for(var i = 0; i < length-set+1; i++){
       arr.push(words[key].substring(i,i+set));
     }
