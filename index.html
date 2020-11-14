@@ -20,6 +20,7 @@
   <!------------------------------->
 
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/loading.css"/>
 </head>
 
 <body>
@@ -105,16 +106,16 @@
   <!-------------------->
   <!-- content starts -->
   <!-------------------->
-  <div class="wrapper">
+  <div class="container">
 
     <!-------------------->
     <!-- Search Bar -->
     <!-------------------->
     <nav class="fixed-head navbar navbar-light bg-light justify-content-center">
       <a class="navbar-brand"></a>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Find something specific..." aria-label="Search">
-        <button class="btn btn-outline-success btn-sm" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
+      <form class="form-inline" id="keySearching" action="" method="GET">
+        <input class="form-control mr-sm-2" id="restaurant_search" placeholder="Find something specific..." aria-label="Search">
+        <button class="btn btn-outline-success btn-sm" id="restaurant_search_submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
             class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
@@ -180,7 +181,7 @@
     <!--------------------->
     <!-- Can use javascript to add to this -->
     <div class="restaurant-info">
-      <div class="restaurant-image" style="width:100%; height: 100%;position: ;">
+      <div class="restaurant-image" style="width:100%; height: 100%; margin-left: 10%;">
         <div class="restaurantStars">
           <img class="star" id="star1" src="images/star.png"/>
         </div>
