@@ -2,7 +2,6 @@ $('body').children().filter(".loading-bg").css("position","fixed").css("top","0"
 
 $(document).ready(function(){
   $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
-
   
   $("button").on("click",function(event){
 
@@ -40,7 +39,8 @@ $(document).ready(function(){
         Fri: $("#restaurant-fri-from").val() +"-"+ $("#restaurant-fri-to").val(),
         Sat: $("#restaurant-sat-from").val() +"-"+ $("#restaurant-sat-to").val(),
         Sun: $("#restaurant-sun-from").val() +"-"+ $("#restaurant-sun-to").val(),
-      }
+      },
+      PRICE_RANGE: parseInt($("#restaurant-price").val()),
     }
     db.collection("restaurants")
     .add(submission)

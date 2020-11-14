@@ -222,6 +222,18 @@
     <textarea  class="form-control restaurant-menu" aria-label="restaurant-menu">{"food":{"sample":"1$", "sample2":"2$"},"drinks":{"sample":"1$"}}</textarea>
   </div>
   <br>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="restaurant-price">Price range</label>
+    </div>
+    <select class="custom-select" id="restaurant-price">
+      <option selected>Choose...</option>
+      <option value="1">$</option>
+      <option value="2">$$</option>
+      <option value="3">$$$</option>
+    </select>
+  </div>
+  <br>
   <div class="form-group">
     <label for="restaurant-image">restaurant-image</label>
     <input type="file" class="form-control-file" id="restaurant-image" accept="image/png, image/jpg" multiple>

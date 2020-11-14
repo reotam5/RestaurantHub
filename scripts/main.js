@@ -64,6 +64,86 @@ $(document).ready(function () {
 
   });
 
+  $(".dropdown-menu > .dropdown-item").on("click", async function(){
+    if($(".dropdown-menu > .active").hasClass("price-l-h")){
+      var length = $(".restaurant-panel").length;
+      var info = [];
+      for(var i = 0; i < length; i++){
+        var id = $($(".restaurant-panel")[i]).attr("id");
+        var ref = db.collection("restaurants").doc(id);
+        await ref.get().then(async function(doc){
+          var price = doc.data()["PRICE_RANGE"];
+          info.push({
+            element: $($(".restaurant-panel")[i]),
+            price: price
+          });
+        });
+      }
+      info.sort(function(a,b){
+        return a.price - b.price;
+      });
+      $(".restaurant-panel").remove();
+      info.forEach(block =>{
+        $(".container").append(block["element"]);
+      });
+
+    }else if($(".dropdown-menu > .active").hasClass("price-h-l")){
+      var length = $(".restaurant-panel").length;
+      var info = [];
+      for(var i = 0; i < length; i++){
+        var id = $($(".restaurant-panel")[i]).attr("id");
+        var ref = db.collection("restaurants").doc(id);
+        await ref.get().then(async function(doc){
+          var price = doc.data()["PRICE_RANGE"];
+          info.push({
+            element: $($(".restaurant-panel")[i]),
+            price: price
+          });
+        });
+      }
+      info.sort(function(a,b){
+        return b.price - a.price;
+      });
+      $(".restaurant-panel").remove();
+      info.forEach(block =>{
+        $(".container").append(block["element"]);
+      });
+
+    }else if($(".dropdown-menu > .active").hasClass("rating")){
+      var length = $(".restaurant-panel").length;
+      var info = [];
+      for(var i = 0; i < length; i++){
+        var id = $($(".restaurant-panel")[i]).attr("id");
+        var ref = db.collection("restaurants").doc(id);
+        await db.collection("reviews").where("REST_ID","==",ref).get().then(function(queryDoc){
+          var size = queryDoc.size;
+          var count = 0;
+          queryDoc.forEach(doc =>{
+            count += parseInt(doc.data()["STARS"]);
+          });
+          var avg = Math.round(count/size);
+          if(Number.isNaN(avg)){
+            avg = 0;
+          }
+          info.push({
+            element: $($(".restaurant-panel")[i]),
+            avg: avg
+          });
+        });
+      }
+      info.sort(function(a,b){
+        return b.avg - a.avg
+      });
+      $(".restaurant-panel").remove();
+      info.forEach(block =>{
+        $(".container").append(block["element"]);
+      });
+      
+    }else if($(".dropdown-menu > .active").hasClass("table-availability")){
+      console.log("this feature needs some functionality to track current restaurant availability");
+    }
+  });
+
 });
 
 
@@ -108,12 +188,12 @@ async function makeBlock(doc){
     }
   }
   if(filter_space>0){
-    if(space < filter_space){
+    if(space > filter_space){
       return;
     }
   }
   if(filter_max>0){
-    if(max < filter_max){
+    if(max > filter_max){
       return;
     }
   }
@@ -157,7 +237,7 @@ function triGram(word){
 }
 
 function createPanel(id, name, img, reserve, tracker, verified, hours) {
-  $(".container").append($(".restaurant-info").clone().removeClass("restaurant-info").addClass("restaurant-panel-" + id).addClass("restaurant-panel"));
+  $(".container").append($(".restaurant-info").clone().removeClass("restaurant-info").addClass("restaurant-panel-" + id).addClass("restaurant-panel").attr('id',id));
   let x = ".restaurant-panel-" + id;
   $(x + " .restaurant-image > img").attr("src", img).attr("alt", "the-keg");
   $(x + " .restaurant-name").append(name);
@@ -174,30 +254,8 @@ function createPanel(id, name, img, reserve, tracker, verified, hours) {
   $(x + " .restaurant-details .hours").append(hours);
 }
 
-//Temporary/scuffed script for sortby dropdown active class
 
-$('#sortby1').on('click', function (e) {
-  $('#sortby1').each(function () {
-    $(this).addClass('active');
-    $("#sortby2").removeClass('active');
-    $("#sortby3").removeClass('active');
-  })
-
-});
-
-$('#sortby2').on('click', function (e) {
-  $('#sortby2').each(function () {
-    $(this).addClass('active');
-    $("#sortby1").removeClass('active');
-    $("#sortby3").removeClass('active');
-  })
-
-  $('#sortby3').on('click', function (e) {
-    $('#sortby3').each(function () {
-        $(this).addClass('active');
-        $("#sortby1").removeClass('active');
-        $("#sortby2").removeClass('active');
-    })
-
-});  
+$(".dropdown-item").on("click",function(e){
+  $(".dropdown-item").removeClass("active");
+  $(e.target).addClass("active");
 });
