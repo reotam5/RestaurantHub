@@ -153,22 +153,45 @@
           </div>
           <div class="modal-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-              <label class="form-check-label" for="defaultCheck1">
+              <input class="form-check-input" id="require-mask-check" type="checkbox">
+              <label class="form-check-label" for="form-check-input">
                 Requires Mask
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-              <label class="form-check-label" for="defaultCheck2">
-                Has Table Tracker Feature
+              <input class="form-check-input" id="table-tracker-check" type="checkbox">
+              <label class="form-check-label" for="table-tracker-check">
+                Table Tracker
               </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" id="verified-hours-check" type="checkbox">
+              <label class="form-check-label" for="verified-hours-check">
+                Verified hours
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" id="online-reservation-check" type="checkbox">
+              <label class="form-check-label" for="online-reservation-check">
+                Online reservation
+              </label>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Max customers</span>
+              </div>
+              <input type="number" class="form-control" id="max-customer-check" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Table spacing</span>
+              </div>
+              <input type="number" class="form-control" id="table-spacing-check" aria-describedby="basic-addon3">
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-light">Return Defaults</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-success">Apply</button>
+            <button type="button" id="filter-apply" class="btn btn-success" data-dismiss="modal">Apply</button>
           </div>
         </div>
       </div>

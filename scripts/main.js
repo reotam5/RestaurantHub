@@ -19,12 +19,12 @@ $(document).ready(function () {
     });
   });
 
+  $("#filter-apply").on('click',function(){
+    $("#keySearching").trigger("submit");
+  });
 
   $('#keySearching').submit(async function (e) {
-   
     e.preventDefault();
-    
-
     var query = db.collection("restaurants");
     //reading through all restaurant
     await query.get().then(querySnapshot => {
@@ -44,14 +44,13 @@ $(document).ready(function () {
 
     $(".restaurant-panel").remove();
     var restDocs = {};
-    if(keywords.length == 0){
+    if(keywords.length == 1){
         var docQuery = await query.get();
         docQuery.forEach(doc =>{
           makeBlock(doc);
         });
     }else{
       keywords.forEach(async word =>{
-        console.log(word);
         var targetQuery = query.where(`tokenMap.${word}`, "==", true);
         var docQuery = await targetQuery.get();
         docQuery.forEach(doc =>{
@@ -67,9 +66,61 @@ $(document).ready(function () {
 
 });
 
-async function makeBlock(doc){
-  var name = doc.get("REST_NAME");
 
+async function makeBlock(doc){
+
+  var filter_verified = $("#verified-hours-check").is(":checked");
+  var filter_table = $("#table-tracker-check").is(":checked");
+  var filter_mask = $("#require-mask-check").is(":checked");
+  var filter_reserve = $("#online-reservation-check").is(":checked");
+  var filter_max = $("#max-customer-check").val();
+  var filter_space = $("#table-spacing-check").val();
+
+  var traits = doc.get("TRAITS");
+  var reserve = traits["ONLINE_RESERVE"];
+  var tracker = traits["TABLE_TRACK"];
+  var verified = traits["VERIFIED"];
+
+  var safetySet = doc.get("SAFETY_PROTOCOL");
+  var mask = safetySet["MASK_REQ"];
+  var max = safetySet["MAX_CUST"];
+  var space = safetySet["TABLE_SPACE"];
+
+
+  if(filter_verified){
+    if(!verified){
+      return;
+    }
+  }
+  if(filter_table){
+    if(!tracker){
+      return;
+    }
+  }
+  if(filter_mask){
+    if(!mask){
+      return;
+    }
+  }
+  if(filter_reserve){
+    if(!reserve){
+      return;
+    }
+  }
+  if(filter_space>0){
+    if(space < filter_space){
+      return;
+    }
+  }
+  if(filter_max>0){
+    if(max < filter_max){
+      return;
+    }
+  }
+
+
+
+  var name = doc.get("REST_NAME");
   var restID = doc.id;
   var storageRef = firebase.storage().ref().child("restaurants/" + restID);
   var img = doc.get("IMG_URL");
@@ -78,11 +129,6 @@ async function makeBlock(doc){
   // imgRef.getDownloadURL().then(function(url){
   //   imgURL = url;
   // });
-
-  var traits = doc.get("TRAITS");
-  var reserve = traits["ONLINE_RESERVE"];
-  var tracker = traits["TABLE_TRACK"];
-  var verified = traits["VERIFIED"];
 
   var hours = doc.get("HOURS");
   let listHours = "<p>Monday - " + hours["Mon"] + "</p>" +
