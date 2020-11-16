@@ -7,7 +7,7 @@ body{
 
 .restaurant-panel{
     background-color: white;
-    border: 1px solid #363645;
+    border: 1px solid rgb(207, 202, 202);
     border-radius: 7px;
     /*box-shadow: 0 0 20px #9ecaed; */
 }
@@ -34,9 +34,9 @@ div.slidebar{
     opacity: .9;
 }
 .navbar{
-    border-bottom: 1px solid #262730;
-    border-left: 1px solid #262730;
-    border-right: 1px solid #262730;
+    border-bottom: 1px solid rgb(207, 202, 202);
+    border-left: 1px solid rgb(207, 202, 202);
+    border-right: 1px solid rgb(207, 202, 202);
     
 }
 .bg-white{
