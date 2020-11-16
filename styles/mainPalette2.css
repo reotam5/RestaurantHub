@@ -1,0 +1,142 @@
+
+/*COLOURS STARTS*/
+body{
+    background-color: #badfe0;
+}
+
+.restaurant-panel{
+    background-color: #FDFFF7;
+    border: 1px solid #363645;
+    border-radius: 7px;
+    /*box-shadow: 0 0 20px #9ecaed; */
+}
+
+.siteHead{
+    background-color: #FFED65;
+    border-bottom: #262730 1px solid;
+}
+
+.siteHead .siteInfo{
+    color: black;
+}
+
+.btn-slide{
+    filter: invert(0%);
+}
+
+.siteHead img{
+    filter: invert(0%);
+}
+
+div.slidebar{
+    background-color: #FFED65;
+    opacity: 1;
+}
+
+.slidebar .slideContent{
+    color: black;
+}
+
+.navbar{
+    border-bottom: 1px solid #262730;
+    border-left: 1px solid #262730;
+    border-right: 1px solid #262730;
+    
+}
+.bg-white{
+    background-color: #FDFFF7 !important;
+    opacity: .95;
+}
+
+
+
+
+/*COLOURS ENDS*/
+
+@media only screen and (min-width : 761px) {
+    .restaurant-image > img {
+        width: 250px;
+        height: 200px;
+    }
+
+    .restaurant-image {
+        margin: auto;
+    }
+}
+
+
+@media only screen and (max-width : 760px) {
+    .form-inline .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+
+    .restaurant-image > img {
+        width: 90%;
+        height: 150px;
+    }
+
+    .restaurant-image {
+        margin-left: 15px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.restaurant-info {
+    display: none;
+} 
+
+div[class ^= "restaurant-panel"] {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 48% 2% 50%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.restaurant-image {
+    grid-column: 1;
+}
+
+.restaurant-details {
+    grid-column: 3;
+    display: grid;
+    grid-row: 20% 80%;
+}
+
+.restaurant-icons {
+    text-align: left;
+    margin-right: 15%;
+}
+
+.hours {
+    text-align: left;
+
+}
+
+.hours p {
+    margin: 0;
+}
+
+.restaurantStars img {
+    width: 20px;
+}
+
+.restaurant-icons img {
+    width: 20px;
+    margin: 10px;
+}
+
+#button2{
+
+    margin-left: 5px;
+    margin-right: 5px;
+}
+nav{
+    transition: 0.5s;
+    margin-bottom: 1em;
+}
