@@ -1,42 +1,38 @@
 
+
 /*COLOURS STARTS*/
 body{
-    background-color: #f2f2f2;
+    background-color: #262730;
 }
 
 .restaurant-panel{
-    background-color: #FDFFF7;
-    border: 1px solid rgb(207, 202, 202);
-    border-radius: 7px;
+    background-color: #F9FAF0;
+    border: 2px solid #75bd9a;
+    border-radius: 20px;
     /*box-shadow: 0 0 20px #9ecaed; */
 }
 
 .siteHead{
-    background-color: #FFED65;
+    background-color: #26b86f;
     border-bottom: #262730 1px solid;
 }
 
 .siteHead .siteInfo{
-    color: black;
+    color: white
 }
 
 .btn-slide{
-    filter: invert(0%);
+    filter: invert(100%);
 }
 
-.siteHead img{
+.sitelogo img{
     filter: invert(0%);
 }
 
 div.slidebar{
-    background-color: #FFED65;
-    opacity: 1;
+    background-color: #77BA99;
+    opacity: .9;
 }
-
-.slidebar .slideContent{
-    color: black;
-}
-
 .navbar{
     border-bottom: 1px solid rgb(207, 202, 202);
     border-left: 1px solid rgb(207, 202, 202);
@@ -44,7 +40,7 @@ div.slidebar{
     
 }
 .bg-white{
-    background-color: #FDFFF7 !important;
+    background-color: #FAFAF0 !important;
     opacity: .95;
 }
 
