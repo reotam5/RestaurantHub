@@ -39,7 +39,7 @@ class Restaurant{
       stars = Number.parseInt(targetID.substr(5));
   
       $("#reviewStar").children().filter("img").attr("src", "images/star.png");
-      for (i = 0; i <= stars; i++) {
+      for (var i = 0; i <= stars; i++) {
         $("#rStar" + i).attr("src", "images/darkStar.png");
       }
     });
@@ -48,6 +48,12 @@ class Restaurant{
       e.preventDefault();
 
       var user = firebase.auth().currentUser;
+
+      if(!user){
+        window.location.href = "login.html?url="+window.location.href;
+        return;
+      }
+
       var userRef = db.collection("users").doc(user.uid);
 
       await db.collection("reviews").where("CUST_ID","==",userRef)
@@ -58,13 +64,15 @@ class Restaurant{
             doc.ref.delete();
           });
         }
-      })
+      });
+
       var review = {
         REST_ID: restRef,
         CUST_NAME: user.displayName,
         CUST_ID: userRef,
         REVIEW: $("#review-text").val(),
-        STARS: stars
+        STARS: stars,
+        DATE: new Date()
       };
 
       db.collection("reviews").add(review);
