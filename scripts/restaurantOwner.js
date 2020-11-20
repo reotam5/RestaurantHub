@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     var submission = {
       REST_NAME: $("#restaurant-name").parent().parent().find("input").val(),
-      RESTBIO: $("#restaurant-bio").parent().parent().find("input").val(),
+      REST_BIO: $("#restaurant-bio").parent().parent().find("input").val(),
       CONTACT: {
         ADDRESS: $("#restaurant-address").parent().parent().find("input").val(),
         EMAIL: $("#restaurant-email").parent().parent().find("input").val(),
