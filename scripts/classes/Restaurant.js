@@ -103,7 +103,8 @@ class Restaurant{
     $("#rest-phone").html("Phone:&nbsp;"+contact["PHONE"]);
   
     //bio
-    $(".restaurant-bio").empty().append(bio)
+    $(".restaurant-bio").empty().append(bio);
+    $(".restaurant-bio").prepend($("<span class='restaurant-section-title'>Bio:</span>"));
   
     //menu
     var menuBlock = '<div class="card">';
