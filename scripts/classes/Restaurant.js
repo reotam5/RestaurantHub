@@ -27,6 +27,50 @@ class Restaurant{
     });
   }
 
+  setUpReview(){
+    var restID = this.REST_ID;
+    var name = this.REST_NAME;
+    var restRef = this.ref;
+    var stars = 0;
+    $("#restaurantReviewModal").html(name + " :");;
+
+    $(".rStar").hover(event =>{
+      var targetID = $(event.target).attr("id");
+      stars = Number.parseInt(targetID.substr(5));
+  
+      $("#reviewStar").children().filter("img").attr("src", "images/star.png");
+      for (i = 0; i <= stars; i++) {
+        $("#rStar" + i).attr("src", "images/darkStar.png");
+      }
+    });
+
+    $("#submitReview").on("click", async function(e){
+      e.preventDefault();
+
+      var user = firebase.auth().currentUser;
+      var userRef = db.collection("users").doc(user.uid);
+
+      await db.collection("reviews").where("CUST_ID","==",userRef)
+      .get()
+      .then(function(docQuery){
+        if(docQuery.size > 0){
+          docQuery.forEach(doc => {
+            doc.ref.delete();
+          });
+        }
+      })
+      var review = {
+        REST_ID: restRef,
+        CUST_NAME: user.displayName,
+        CUST_ID: userRef,
+        REVIEW: $("#review-text").val(),
+        STARS: stars
+      };
+
+      db.collection("reviews").add(review);
+    });
+  }
+
   updatePage(){
     var restID = this.REST_ID;
     var name = this.REST_NAME;

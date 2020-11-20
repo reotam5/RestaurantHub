@@ -53,6 +53,9 @@ $(document).ready(async function () {
   //listen to changes and updates html
   restaurant.updateListner();
 
+  restaurant.setUpReview();
+  
+
 
   //listner for reviews and stars
   listenReviews(restaurant);
@@ -174,9 +177,6 @@ function setStar(stars) {
     $(".restaurantStars").children().filter("img").attr("src", "images/star.png");
     for (i = 0; i <= stars; i++) {
       $("#star" + i).attr("src", "images/darkStar.png");
-
-
-
     }
   }
 }
