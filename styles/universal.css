@@ -56,7 +56,6 @@
 .custom-transform{
   transition: 0.5s;
   position: fixed !important;
-  width: 100vw !important;
   transform: translateY(-20px) !important;
 }
 
@@ -194,6 +193,12 @@ div.openNav {
 .slideFooter img{
   width: 30px;
   height: 30px;
+}
+.fixed-head{
+  padding: 5;
+  padding-top: 65px !important;
+  padding-bottom: 5px;
+  width: 100%;
 }
 /**********************/
 /* slide bar css ends */
