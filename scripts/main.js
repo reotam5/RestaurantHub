@@ -44,15 +44,16 @@ $(document).ready(function () {
 
     $(".restaurant-panel").remove();
     var restDocs = {};
-    if(keywords.length == 1){
-        var docQuery = await query.get();
-        docQuery.forEach(doc =>{
-          makeBlock(doc);
-        });
+    if(keywords.length == 1 && keywords[0] == ""){
+      var docQuery = await query.get();
+      docQuery.forEach(doc =>{
+        makeBlock(doc);
+      });
     }else{
       keywords.forEach(async word =>{
         var targetQuery = query.where(`tokenMap.${word}`, "==", true);
         var docQuery = await targetQuery.get();
+
         docQuery.forEach(doc =>{
           if(restDocs[doc.id] != "visited"){
             restDocs[doc.id] = "visited";
@@ -61,6 +62,7 @@ $(document).ready(function () {
         });
       });
     }
+    searchNoMatching();
 
   });
 
@@ -142,6 +144,8 @@ $(document).ready(function () {
     }else if($(".dropdown-menu > .active").hasClass("table-availability")){
       console.log("this feature needs some functionality to track current restaurant availability");
     }
+
+    searchNoMatching();
   });
 
 });
@@ -237,6 +241,8 @@ function triGram(word){
 }
 
 function createPanel(id, name, img, reserve, tracker, verified, hours) {
+  $("#no-matching").remove();
+
   $(".container").append($(".restaurant-info").clone().removeClass("restaurant-info").addClass("restaurant-panel-" + id).addClass("restaurant-panel").attr('id',id));
   let x = ".restaurant-panel-" + id;
   $(x + " .restaurant-image > img").attr("src", img).addClass("imgScale").attr("alt", "the-keg");
@@ -259,3 +265,11 @@ $(".dropdown-item").on("click",function(e){
   $(".dropdown-item").removeClass("active");
   $(e.target).addClass("active");
 });
+
+function searchNoMatching(){
+  if($(".restaurant-panel").length == 0){
+    $(".restaurant-panel").remove();
+    $("#no-matching").remove();
+    $(".container").append($("<div id='no-matching' style='color:white;'>No matcing found. Please try using other words.</div>"));
+  }
+}
