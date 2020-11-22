@@ -162,24 +162,36 @@ function listenReviews(Restaurant) {
 function updateReviews(cust_ID,cust_name, date, review, stars) {
   //review (dont list more than 5)
   var reviewBlock = '<div class="media" style="border-radius:10px; background-color:rgb(220,220,220); padding: 10px; margin-bottom:10px;">';
-  reviewBlock += '    <img class="align-self-center mr3" src="images/person.png" style="height:60px; margin:10px;"/>';
-  reviewBlock += '    <div class="media-body review-div" style="font-size:15pt; line-height:18px;">';
+  reviewBlock += '    <img class="customer-profile-pic align-self-center mr3" src="images/person.png" style="height:60px; margin:10px;"/>';
+  reviewBlock += '    <div class="media-body review-div" style="font-size:15pt;">';
   reviewBlock += '      <h5 class="mt-0 review-author"></h5>';
-  reviewBlock += '      <span class="review-rate" style="font-weight:bold; font-size:10pt;"></span><br/>';
+  reviewBlock += '      <div class="customerReviewStar">';
+  reviewBlock += '        <img class="rStar" id="crStar1" src="images/star.png">';
+  reviewBlock += '        <img class="rStar" id="crStar2" src="images/star.png">';
+  reviewBlock += '        <img class="rStar" id="crStar3" src="images/star.png">';
+  reviewBlock += '        <img class="rStar" id="crStar4" src="images/star.png">';
+  reviewBlock += '        <img class="rStar" id="crStar5" src="images/star.png">';
+  reviewBlock += '      </div>';
   reviewBlock += '      <span class="review-date" style="font-weight:bold; font-size:10pt;"></span><br/>';
+  reviewBlock += '      <div class="review-content"></div><br/>';
   reviewBlock += '    </div>';
   reviewBlock += '</div>';
 
   var editBlock = $(reviewBlock);
   editBlock.find(".review-author").html(cust_name);
-  editBlock.find(".review-div").append(review);
-  editBlock.find(".review-date").html("Date: "+new Date(date).toUTCString());
-  editBlock.find(".review-rate").html("Stars: "+stars);
+  editBlock.find(".review-content").append(review);
+  editBlock.find(".review-date").html(new Date(date).toUTCString());
+  if (stars <= 5 && stars >= 0) {
+    editBlock.find(".rStar").attr("src", "images/star.png");
+    for (i = 0; i <= stars; i++) {
+      editBlock.find("#crStar" + i).attr("src", "images/darkStar.png");
+    }
+  }
 
   var storageRef = firebase.storage().ref().child("users/"+cust_ID.id);
   var imgRef = storageRef.child("profile.jpg");
   imgRef.getDownloadURL().then(function(url){
-    editBlock.find("img").attr("src",url);
+    editBlock.find(".customer-profile-pic").attr("src",url);
   },function(error){
     //console.log("No user icon uploaded yet.");
   });
