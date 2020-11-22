@@ -67,19 +67,16 @@ $(document).ready(async function () {
   //writing reservations
   $("#reserve-submit").on("click", function (event) {
     var user = firebase.auth().currentUser;
+
     if (user) {
       db.collection("reservations").add({
-          DATE: $("#datepickerf").val(),
-          TIME: $("#reserve-time").val(),
-          REST_ID: restID,
-          CUST_ID: user.uid
-          //DATE: fix timestamp
+          DATE: new Date($("#datepickerf").val()),
+          REST_ID: db.collection("restaurants").doc(restID),
+          CUST_ID: db.collection("users").doc(user.uid)
 
         })
         .then(function (docRef) {
-          var restaurantID = docRef.id;
-
-          console.log("Document written with ID: ", docRef.id);
+          alert("Reservation has been made successfully.")
         })
         .catch(function (error) {
           console.error("Error adding document: ", error);

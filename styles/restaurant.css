@@ -1,6 +1,9 @@
 /***************************************/
 /* This is for styling restaurant.html */
 /***************************************/
+body{
+  background-color: white !important;
+}
 .restaurantHead{
   position: relative;
   height: 360px;
