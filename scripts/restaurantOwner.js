@@ -1,7 +1,5 @@
-$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-
+//create JSON from the input forms and add in restaurnt collection
 $(document).ready(function(){
-  $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
   
   $("button").on("click",function(event){
 

@@ -1,13 +1,19 @@
+//class that contains necessary restaurant information to display restaurant page.
 class Restaurant{
   constructor(REST_ID){
     this.REST_ID = REST_ID;
     this.ref = db.collection("restaurants").doc(this.REST_ID);
   }
 
+  //this is called whenever firestore of this restaurant is updated
   updateListner(){
     var that = this;
     var snap = this.ref.onSnapshot(async function(snap){
+
+      //update indtance variable to the updated information before displaying
       await that.updateVariables();
+
+      //update page
       that.updatePage();
     });
   }
@@ -26,7 +32,8 @@ class Restaurant{
       this.MENU = doc.data()["MENU"];
     });
   }
-
+  
+  //setting up review window for this restaurant.
   setUpReview(){
     var restID = this.REST_ID;
     var name = this.REST_NAME;
@@ -34,6 +41,7 @@ class Restaurant{
     var stars = 0;
     $("#restaurantReviewModal").html(name + " :");;
 
+    //hover star to set review  rating.
     $(".rStar").hover(event =>{
       var targetID = $(event.target).attr("id");
       stars = Number.parseInt(targetID.substr(5));
@@ -44,6 +52,8 @@ class Restaurant{
       }
     });
 
+
+    //submit review on click
     $("#submitReview").on("click", async function(e){
       e.preventDefault();
 
@@ -79,6 +89,8 @@ class Restaurant{
     });
   }
 
+
+  //update the restaurant page based on the current instance variables.
   updatePage(){
     var restID = this.REST_ID;
     var name = this.REST_NAME;

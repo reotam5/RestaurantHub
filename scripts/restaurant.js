@@ -2,21 +2,21 @@
 /* This is javascript for restaurant.html */
 /******************************************/
 var urlParams = new URLSearchParams(window.location.search);
+
+//restaurnt page url has to have parameter req=REST_ID
+//so that page and display corresponding restaurnt information
 var restID = urlParams.get("req");
 var form = document.querySelector("#reservation");
 if (restID == null) {
   alert("Enter reataurantID param(?req=restaurantID)(THIS ALERT IS FOR DEBUGGING PURPOSE)");
 } else {
   var restRef = db.collection("restaurants").doc(restID);
-
-
 }
 
 
 
 $(document).ready(async function () {
-  //enable loading screen
-  loadingEnable();
+
   var uid;
   await firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -26,9 +26,11 @@ $(document).ready(async function () {
       checkFav(custRef);
       //toggle farovite on click
       $(".setFav").on("click", function (event) {
+        //set or unset favorite depending on current status
         toggleFav(custRef);
       });
     } else {
+      //if user clicked setFav(setting as farovite restaurant, it prompts to login)
       $(".setFav").on("click", function (event) {
         signInPrompt();
       });
@@ -53,6 +55,7 @@ $(document).ready(async function () {
   //listen to changes and updates html
   restaurant.updateListner();
 
+  //setup review modal for this restaurant
   restaurant.setUpReview();
   
 
@@ -64,7 +67,7 @@ $(document).ready(async function () {
   loadingDisable();
   //signInPrompt();
 
-  //writing reservations
+  //submit reservation on click
   $("#reserve-submit").on("click", function (event) {
     var user = firebase.auth().currentUser;
 
@@ -73,7 +76,6 @@ $(document).ready(async function () {
           DATE: new Date($("#datepickerf").val()),
           REST_ID: db.collection("restaurants").doc(restID),
           CUST_ID: db.collection("users").doc(user.uid)
-
         })
         .then(function (docRef) {
           alert("Reservation has been made successfully.")
@@ -87,8 +89,9 @@ $(document).ready(async function () {
   })
 });
 
+//if this restaurnt was already in favorite list, remove from favorite.
+//if not, set this restaurnt as favorite
 function toggleFav(custRef) {
-
   db.collection("fav_restaurant")
     .where("CUST_ID", "==", custRef)
     .where("REST_ID", "==", restRef)
@@ -110,7 +113,8 @@ function toggleFav(custRef) {
       }
     });
 }
-
+//this is called initially when page is loaded
+//to check current favorite status
 function checkFav(custRef) {
   db.collection("fav_restaurant")
     .where("CUST_ID", "==", custRef)
@@ -125,6 +129,8 @@ function checkFav(custRef) {
     });
 }
 
+//listen to review collection where REST_ID is this restaurant
+//updates page if changed
 function listenReviews(Restaurant) {
   var restRef = Restaurant.ref;
   db.collection("reviews")
@@ -151,13 +157,22 @@ function listenReviews(Restaurant) {
         sum += starArr[star];
       }
       var avg = sum / starArr.length;
-      setStar(avg);
+
+      //check if avg is valid
+      if (avg <= 5 && avg >= 0) {
+        $(".restaurantStars").children().filter("img").attr("src", "images/star.png");
+
+        //loop through (avg) times and change those images
+        for (i = 0; i <= avg; i++) {
+          $("#star" + i).attr("src", "images/darkStar.png");
+        }
+      }
     });
 }
 
-
+//write review from information in parameter
 function updateReviews(cust_ID,cust_name, date, review, stars) {
-  //review (dont list more than 5)
+
   var reviewBlock = '<div class="media" style="border-radius:10px; background-color:rgb(220,220,220); padding: 10px; margin-bottom:10px;">';
   reviewBlock += '    <img class="customer-profile-pic align-self-center mr3" src="images/person.png" style="height:60px; margin:10px;"/>';
   reviewBlock += '    <div class="media-body review-div" style="font-size:15pt;">';
@@ -185,6 +200,7 @@ function updateReviews(cust_ID,cust_name, date, review, stars) {
     }
   }
 
+  //getting profile.jpg from firebase storage
   var storageRef = firebase.storage().ref().child("users/"+cust_ID.id);
   var imgRef = storageRef.child("profile.jpg");
   imgRef.getDownloadURL().then(function(url){
@@ -193,15 +209,5 @@ function updateReviews(cust_ID,cust_name, date, review, stars) {
     //console.log("No user icon uploaded yet.");
   });
 
-
   $(".restaurant-reviews").append(editBlock);
-}
-
-function setStar(stars) {
-  if (stars <= 5 && stars >= 0) {
-    $(".restaurantStars").children().filter("img").attr("src", "images/star.png");
-    for (i = 0; i <= stars; i++) {
-      $("#star" + i).attr("src", "images/darkStar.png");
-    }
-  }
 }

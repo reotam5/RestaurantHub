@@ -5,7 +5,9 @@
 * [Contents](#content)
 
 ## General Info
-Include "REQUIRED SECTION" in every page headder to import universal components like header bar and slidebar. 
+Our app allows users to browse and find restaurants, view restaurant specific information
+including COVID-19 related precautions, and make reservations. It is designed to be the
+only app or information source that the user needs to make dining plans.
 
 ## Contributers
 * Reo Tamai (reotam5)
@@ -25,12 +27,15 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when 
-├── main.html                # main page with list of restaurants
+├── index.html               # main page with list of restaurants
+├── favorite.html            # page for displaying list of favorited restaurnts.(require logged in)
 ├── profile.html             # page for user profile
-├── restaurant.html          # page for individual restaurant
-├── template.html            # page for shared work.
-├── universalContent.html    # body of this page will appear in every other page. (body   includes header bar and slidebar)
+├── restaurant.html          # page for restaurant information (restaurant.html?req=REST_ID displays information about restaurnt with id REST_ID)
+├── universalTemplate.html   # page for shared work. (ex. header, slidebar...)
+├── restaurntOwner.html      # A temporary page for debugging purpose. It allows adding a restaurnt in firebase.
+├── login.html               # Log in page.(only email login supproted)
+├── loading.html             # loading screen template
+├── maptest.html             # an ongoing developing page for map feature.
 └── README.md
 
 It has the following subfolders and files:
@@ -40,32 +45,44 @@ It has the following subfolders and files:
     /close.png
     /darkStar.png
     /favorite.png
+    /delete.png
+    /edit.png
     /home.png
     /logo.png
+    /location.png
+    /login.png
+    /go-to-favourites.png
     /map.png
     /menu.png
-    /notification.png
     /person.png
-    /restaurant1.jpg
-    /setting.png
-    /shoppingCart.png
     /star.png
     /tableTracker.png
     /verifiedHours.png
 ├── scripts                  # Folder for scripts
-    /restaurant.js           # restaurant.html should have this js.
-    /universal.js            # This imports universal contents like heading bar and slidebar. It also styles other elements so that head bar can fit into page.
+    /favorite.js             # get and display user favorite restuarnt list
+    /firebase_api.js         # contains api key for firebase
+    /loading.js              # loading page animation
+    /login.js                # firebase auth UI
+    /main.js                 # lists all restaurants. Also has search, filter, sorting option.
+    /map.js                  # Creates map
+    /profile.js              # get user information including name, profile img, upcoming reservations, and reservatino history.
+    /restaurant.js           # get restaurant information from REST_ID in url parameter, and display.
+    /restaurantOwner.js      # add restaurant to restaurants collection.
+    /universal.js            # contain universally used functions. (sign in prompt)
+    ├── classes              # Folder for classes
+        /Restaurant.js       # a class that holds necessary information about a restaurnt to display in restaurnat.html
 ├── styles                   # Folder for styles
-    /restaurant.css          # restaurant.html should have this css.
+    /favorite.css            # css for favorite.html
+    /loading.css             # css for loading.html
+    /mainPallette1.css       # green dark theme
+    /mainPallette2.css       # yellow light theme
+    /mainPallette3.css       # green light theme
+    /profile.css             # css for profile.html
+    /restaurant.css          # css for restaurant.html
     /universal.css           # styles universal contents.  
 
 Firebase hosting files: 
 ├── .firebaserc...
 
 
-```
-
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
 

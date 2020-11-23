@@ -13,15 +13,18 @@ $(document).ready(function () {
   // createPanel(rest1[0], rest1[1], rest1[2], rest1[3], rest1[4], rest1[5]);
   // createPanel("joeys", rest1[1], rest1[2], rest1[3], rest1[4], rest1[5]);
 
-  db.collection("restaurants").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
+  //get all restaurants
+  db.collection("restaurants").get().then(function(queryDoc) {
+    queryDoc.forEach(function(doc) {
       makeBlock(doc);
     });
   });
 
+  //when filter is applied, simulate search button.
   $("#filter-apply").on('click',function(){
     $("#keySearching").trigger("submit");
   });
+
 
   $('#keySearching').submit(async function (e) {
     e.preventDefault();
@@ -30,26 +33,36 @@ $(document).ready(function () {
     await query.get().then(querySnapshot => {
       querySnapshot.forEach(async doc => {
         var name = await doc.data()["REST_NAME"];
+
+        //N-Gram is a search algorithm.
+        //tri-gram will separate name into list of words consisting of 3 letters.restaurant-panel
+        //restaurant becomes -> ["res","est","eta","tau","aur","ura","ran","ant","restaurant"].
         var keywords = triGram(name);
+        
         var keyMap = {};
         for(key in keywords){
           keyMap[keywords[key]] = true;
         }
-        //upload token map for searching next step
+        //upload keymap for searching next step
         await query.doc(doc.id).update("tokenMap",keyMap);
       });
     });
 
+    //trigram of the search keyword
     var keywords = triGram(document.getElementById("restaurant_search").value);
 
     $(".restaurant-panel").remove();
+
     var restDocs = {};
     if(keywords.length == 1 && keywords[0] == ""){
+      //empty keyword => display all restaurant
       var docQuery = await query.get();
       docQuery.forEach(doc =>{
         makeBlock(doc);
       });
     }else{
+
+      //display restaurant if any of trigram of search word and restaurant name matched
       keywords.forEach(async word =>{
         var targetQuery = query.where(`tokenMap.${word}`, "==", true);
         var docQuery = await targetQuery.get();
@@ -66,13 +79,17 @@ $(document).ready(function () {
 
   });
 
+  //sorting 
   $(".dropdown-menu > .dropdown-item").on("click", async function(){
+
+    //sort price low to high
     if($(".dropdown-menu > .active").hasClass("price-l-h")){
       var length = $(".restaurant-panel").length;
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
         var ref = db.collection("restaurants").doc(id);
+        //get price range for the displayed restaurants
         await ref.get().then(async function(doc){
           var price = doc.data()["PRICE_RANGE"];
           info.push({
@@ -81,20 +98,25 @@ $(document).ready(function () {
           });
         });
       }
+      //sort by price range
       info.sort(function(a,b){
         return a.price - b.price;
       });
       $(".restaurant-panel").remove();
+
+      //display restaurants
       info.forEach(block =>{
         $(".container").append(block["element"]);
       });
 
+    //sort restaurant price high to low
     }else if($(".dropdown-menu > .active").hasClass("price-h-l")){
       var length = $(".restaurant-panel").length;
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
         var ref = db.collection("restaurants").doc(id);
+        //get displayed restaurants price range
         await ref.get().then(async function(doc){
           var price = doc.data()["PRICE_RANGE"];
           info.push({
@@ -103,26 +125,33 @@ $(document).ready(function () {
           });
         });
       }
+
+      //sort by rice range
       info.sort(function(a,b){
         return b.price - a.price;
       });
       $(".restaurant-panel").remove();
+
+      //diaplay list in price order
       info.forEach(block =>{
         $(".container").append(block["element"]);
       });
 
+    //sort by rating
     }else if($(".dropdown-menu > .active").hasClass("rating")){
       var length = $(".restaurant-panel").length;
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
         var ref = db.collection("restaurants").doc(id);
+        //get all ratings from reviews collection
         await db.collection("reviews").where("REST_ID","==",ref).get().then(function(queryDoc){
           var size = queryDoc.size;
           var count = 0;
           queryDoc.forEach(doc =>{
             count += parseInt(doc.data()["STARS"]);
           });
+          //calculate avg of the rating
           var avg = Math.round(count/size);
           if(Number.isNaN(avg)){
             avg = 0;
@@ -133,25 +162,32 @@ $(document).ready(function () {
           });
         });
       }
+      //sort by avg rating
       info.sort(function(a,b){
         return b.avg - a.avg
       });
+
+      //display in terms of rating
       $(".restaurant-panel").remove();
       info.forEach(block =>{
         $(".container").append(block["element"]);
       });
       
     }else if($(".dropdown-menu > .active").hasClass("table-availability")){
+      //this feature need collaboration with resutarnt owners
       console.log("this feature needs some functionality to track current restaurant availability");
     }
 
+    //checks if restaurnt exists in the page, and if not, display "not found" message
     searchNoMatching();
   });
 
 });
 
-
+//this function prepares necessary information to display restuarnt list divs 
+//and calls createPanel to actually display block
 async function makeBlock(doc){
+  //parameter doc consists of restaurnt information from firebase.
 
   var filter_verified = $("#verified-hours-check").is(":checked");
   var filter_table = $("#table-tracker-check").is(":checked");
@@ -171,6 +207,9 @@ async function makeBlock(doc){
   var space = safetySet["TABLE_SPACE"];
 
 
+  //return to exit without any block for not mathcnig case.
+  //for example, if restaurnt does not require mask but user is looking for restaurnt 
+  //that requires masks, that restauant will not be displayed.
   if(filter_verified){
     if(!verified){
       return;
@@ -202,18 +241,15 @@ async function makeBlock(doc){
     }
   }
 
-
-
+  //prepare variables for future need
   var name = doc.get("REST_NAME");
   var restID = doc.id;
   var storageRef = firebase.storage().ref().child("restaurants/" + restID);
   var img = doc.get("IMG_URL");
   var imgRef = storageRef.child(img[0]);
-  var imgURL = await imgRef.getDownloadURL();    
-  // imgRef.getDownloadURL().then(function(url){
-  //   imgURL = url;
-  // });
+  var imgURL = await imgRef.getDownloadURL();
 
+  //make block for hours
   var hours = doc.get("HOURS");
   let listHours = "<p>Monday - " + hours["Mon"] + "</p>" +
     "<p>Tuesday - " + hours["Tue"] + "</p>" +
@@ -223,9 +259,13 @@ async function makeBlock(doc){
     "<p>Saturday - " + hours["Sat"] + "</p>"  +
     "<p>Sunday - " + hours["Sun"] + "</p>" 
 
+  //display block
   createPanel(restID, name, imgURL, reserve, tracker, verified, listHours);
 }
 
+//N-Gram is a search algorithm.
+//tri-gram will separate name into list of words consisting of 3 letters.restaurant-panel
+//restaurant becomes -> ["res","est","eta","tau","aur","ura","ran","ant","restaurant"].
 function triGram(word){
   var set = 3;
   var arr = [];
@@ -237,9 +277,11 @@ function triGram(word){
       arr.push(words[key].substring(i,i+set));
     }
   }
+  //output is [""]
   return arr;
 }
 
+//display resutanrt list
 function createPanel(id, name, img, reserve, tracker, verified, hours) {
   $("#no-matching").remove();
 
@@ -260,12 +302,14 @@ function createPanel(id, name, img, reserve, tracker, verified, hours) {
   $(x + " .restaurant-details .hours").append(hours);
 }
 
-
+//make sure only one item in dropdown is active.
 $(".dropdown-item").on("click",function(e){
   $(".dropdown-item").removeClass("active");
   $(e.target).addClass("active");
 });
 
+//checks if there is no restaurnt panel displayed in the list.
+//If there is none, display "no matching found" message.
 function searchNoMatching(){
   if($(".restaurant-panel").length == 0){
     $(".restaurant-panel").remove();

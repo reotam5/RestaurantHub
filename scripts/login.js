@@ -1,11 +1,12 @@
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var urlParams = new URLSearchParams(window.location.search);
+
+//if url has parameter url=, it will redirect to that page after logged in.
 var targetUrl = urlParams.get("url");
 if(targetUrl == null){
   targetUrl = "main.html";
 }
 
-console.log(targetUrl);
 var uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
