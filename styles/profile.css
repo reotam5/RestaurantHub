@@ -1,7 +1,7 @@
 
 .content{
   text-align: center;
-  background-color: lightblue;
+  background-color: rgb(99, 99, 99);
   height: 250px;
 }
 body{
@@ -14,7 +14,6 @@ body{
   margin-right: auto;
   margin-left: auto;
   border-radius: 20px;
-  box-shadow: 0px 3px 6px gray;
   background-color: white;
   position: relative;
   z-index: 3;
@@ -48,7 +47,8 @@ body{
   
 }
 #tab-content-wrapper{
-  background-color: white;
+  background-color: #262730;
+  color: white;
   padding-top: 80px;
   transform: translateY(-60px);
   border-radius: 10px 10px 0px 0px;

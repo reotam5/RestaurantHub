@@ -1,13 +1,19 @@
+//class that contains necessary restaurant information to display restaurant page.
 class Restaurant{
   constructor(REST_ID){
     this.REST_ID = REST_ID;
     this.ref = db.collection("restaurants").doc(this.REST_ID);
   }
 
+  //this is called whenever firestore of this restaurant is updated
   updateListner(){
     var that = this;
     var snap = this.ref.onSnapshot(async function(snap){
+
+      //update indtance variable to the updated information before displaying
       await that.updateVariables();
+
+      //update page
       that.updatePage();
     });
   }
@@ -26,7 +32,65 @@ class Restaurant{
       this.MENU = doc.data()["MENU"];
     });
   }
+  
+  //setting up review window for this restaurant.
+  setUpReview(){
+    var restID = this.REST_ID;
+    var name = this.REST_NAME;
+    var restRef = this.ref;
+    var stars = 0;
+    $("#restaurantReviewModal").html(name + " :");;
 
+    //hover star to set review  rating.
+    $(".rStar").hover(event =>{
+      var targetID = $(event.target).attr("id");
+      stars = Number.parseInt(targetID.substr(5));
+  
+      $("#reviewStar").children().filter("img").attr("src", "images/star.png");
+      for (var i = 0; i <= stars; i++) {
+        $("#rStar" + i).attr("src", "images/darkStar.png");
+      }
+    });
+
+
+    //submit review on click
+    $("#submitReview").on("click", async function(e){
+      e.preventDefault();
+
+      var user = firebase.auth().currentUser;
+
+      if(!user){
+        window.location.href = "login.html?url="+window.location.href;
+        return;
+      }
+
+      var userRef = db.collection("users").doc(user.uid);
+
+      await db.collection("reviews").where("CUST_ID","==",userRef)
+      .get()
+      .then(function(docQuery){
+        if(docQuery.size > 0){
+          docQuery.forEach(doc => {
+            doc.ref.delete();
+          });
+        }
+      });
+
+      var review = {
+        REST_ID: restRef,
+        CUST_NAME: user.displayName,
+        CUST_ID: userRef,
+        REVIEW: $("#review-text").val(),
+        STARS: stars,
+        DATE: new Date()
+      };
+
+      db.collection("reviews").add(review);
+    });
+  }
+
+
+  //update the restaurant page based on the current instance variables.
   updatePage(){
     var restID = this.REST_ID;
     var name = this.REST_NAME;
@@ -45,6 +109,7 @@ class Restaurant{
     $(".restaurant-safety-protocols").empty().append(mask_req);
     $(".restaurant-safety-protocols").append(table_space);
     $(".restaurant-safety-protocols").append(max_cust);
+    $(".restaurant-safety-protocols").prepend('<span class="restaurant-section-title">Safety Protocols:</span>');
     //hours
     $(".days.mon").find(".hours").html(hours["Mon"]);
     $(".days.tue").find(".hours").html(hours["Tue"]);
@@ -103,7 +168,8 @@ class Restaurant{
     $("#rest-phone").html("Phone:&nbsp;"+contact["PHONE"]);
   
     //bio
-    $(".restaurant-bio").empty().append(bio)
+    $(".restaurant-bio").empty().append(bio);
+    $(".restaurant-bio").prepend($("<span class='restaurant-section-title'>Bio:</span>"));
   
     //menu
     var menuBlock = '<div class="card">';

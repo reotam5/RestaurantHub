@@ -1,7 +1,10 @@
 
 $(document).ready(function(){
 
+  //loading screen starts
   $('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
+  
+  //only display this page if user is logged in.
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       var uid = user.uid;
@@ -9,14 +12,19 @@ $(document).ready(function(){
       refreshFavList(custRef).then(function(){
         $('body').children().filter(".loading-bg").delay(900).fadeOut(800); 
       });
+
       loadingDisable();
     } else {
+      //if user is not signed in, sign in prompt
       signInPrompt();
+
       loadingDisable();
     }
   });
   
 });
+
+//this will display the favorite list by calling writeCode()
 function refreshFavList(ref){
   var deffer = $.Deferred();
   $("#favorite-list").empty();
@@ -39,6 +47,7 @@ function refreshFavList(ref){
   return deffer.promise();
 }
 
+//this will display the favorite restaurant list.
 function writeCode(id,url,name,image){
   var block = '<div class="favorite-content col-sm-12 col-md-6" id="favorite-'+id+'">';
   block +=    '  <img src="'+image+'" class="favorite-img" alt="restaurant image"/>';
@@ -70,6 +79,8 @@ function deleteFavorite(id){
   refreshFavList();
 }
 
+//get references of favorite restaurants.restaurant-panel
+//this will be used as a loop to go through all references to get all restaurant information.
 function getFavoriteRefs(ref){
   //if(loggedin){
     var restList = {};
@@ -87,6 +98,7 @@ function getFavoriteRefs(ref){
   //}
 }
 
+//get restaurant information from restaurant reference.
 function getRestaurantsInfo(refList){
   var restsInfo = {};
   var deffer = $.Deferred();

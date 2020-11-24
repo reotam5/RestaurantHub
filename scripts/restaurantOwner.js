@@ -1,7 +1,5 @@
-$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-
+//create JSON from the input forms and add in restaurnt collection
 $(document).ready(function(){
-  $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
   
   $("button").on("click",function(event){
 
@@ -13,7 +11,7 @@ $(document).ready(function(){
     
     var submission = {
       REST_NAME: $("#restaurant-name").parent().parent().find("input").val(),
-      RESTBIO: $("#restaurant-bio").parent().parent().find("input").val(),
+      REST_BIO: $("#restaurant-bio").parent().parent().find("input").val(),
       CONTACT: {
         ADDRESS: $("#restaurant-address").parent().parent().find("input").val(),
         EMAIL: $("#restaurant-email").parent().parent().find("input").val(),

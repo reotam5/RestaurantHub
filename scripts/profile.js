@@ -1,14 +1,16 @@
-$('body').children().filter(".loading-bg").css("position","fixed").css("top","0").css("left","0").css("z-index","6").css("width","100vw").css("height","100vh");
-
+//profile feature is only supported for logged in users
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var uid = user.uid;
     var custRef = db.collection("users").doc(uid);
     
+    //listen to reservation collection
     listenReservation(custRef);
+
+    //listen to user collection so that it displays new name if user changed user name.
     listenNewName(uid);
 
-
+    //clicking profile image allows user to upload user profile image.
     $("#profile-img").on("click",function(event){
       var input = document.createElement('input');
       input.type = 'file';
@@ -16,9 +18,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       input.onchange = async selected => { 
         //uploading image file
         var file = selected.target.files[0];
+        //dont allow none image files
         if(file.type == "image/png" || file.type == "image/jpg"){
           // Create a root reference
           var storageRef = firebase.storage().ref();
+          //path to save
           var imgRef = storageRef.child("users/"+uid+'/profile.jpg');
           await imgRef.put(file);
         }else{
@@ -30,14 +34,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         var storageRef = firebase.storage().ref().child("users/"+uid);
         var imgRef = storageRef.child("profile.jpg");
         await imgRef.getDownloadURL().then(function(url){
+          //change displayed users image
           $("#profile-img").attr("src",url);
         });
       }
+
+      //force open file choosing window
       input.click();
-  
+
     });
   
-  
+    //initial load for user profile image
     var storageRef = firebase.storage().ref().child("users/"+uid);
     var imgRef = storageRef.child("profile.jpg");
     imgRef.getDownloadURL().then(function(url){
@@ -46,12 +53,14 @@ firebase.auth().onAuthStateChanged(function(user) {
       console.log("User have not uploaded profile picture yet.");
     });
     
+    //eidt user nanem
     $("div.user-name").on("click",function(event){
       
       if($(event.target).attr("id") == "editing-name"){
         return;
       }
       var currentName = $("#entered-name").html().trim();
+      //create input form and focus that element
       $("#entered-name").html($("<input id='editing-name' type='text'/>"));
       $("#editing-name").val(currentName);
       $("#editing-name").focus();
@@ -60,16 +69,17 @@ firebase.auth().onAuthStateChanged(function(user) {
           alert("name length has to be bigger than 1");
           return;
         }
+        //enter or on blur(opposite of focus in jquery event)
         if((event.which == 13 || event.which == 0)){
           var newName = $("#editing-name").val();
           $("#entered-name").html(newName);
           $("#editing-name").remove();
+
+          //update firestore name
           db.collection("users").doc(uid).update("NAME",newName);
         }
       });
     });
-
-
 
     loadingDisable();
   } else {
@@ -81,13 +91,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 $(document).ready(function(){
   $('body').children().filter(".loading-bg").delay(900).fadeOut(800);
-  
 
-
-  
-
-
+  //threshold for css animation
   var endThreshold = 70;
+
+  //animation on scroll event
   $(window).scroll(function() {
 
     var scroll = $(window).scrollTop();
@@ -119,15 +127,19 @@ $(document).ready(function(){
 
 });
 
-
+//listen user name change
 function listenNewName(uid){
   db.collection("users").doc(uid).onSnapshot(function (snap){
     $("#entered-name").html(snap.data()["NAME"]);
   });
 }
 
-
+//There are two parts that this functin is listening to.
+//reservation that its DATE timestamp starts in the future.
+//in that case, display block in upcoming-resevation div.
+//if the reservation is in the past, display inpast-reservaitons div
 function listenReservation(custRef){
+  //order query by timestamp and cuts at current time
   db.collection("reservations").where("CUST_ID","==",custRef).orderBy("DATE","asc").startAt(firebase.firestore.Timestamp.now())
   .onSnapshot(function(snapQuery){
     snapQuery.forEach(async snap => {
@@ -143,6 +155,7 @@ function listenReservation(custRef){
       
     });
   });
+  //order query by timestamp and cuts at current time
   db.collection("reservations").where("CUST_ID","==",custRef).orderBy("DATE","asc").endAt(firebase.firestore.Timestamp.now())
   .onSnapshot(function(snapQuery){
     snapQuery.forEach(async snap => {

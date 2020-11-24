@@ -1,6 +1,9 @@
 /***************************************/
 /* This is for styling restaurant.html */
 /***************************************/
+body{
+  background-color: white !important;
+}
 .restaurantHead{
   position: relative;
   height: 360px;
@@ -153,4 +156,27 @@
 .restaurant-safety-protocols{
   background-color: aliceblue;
   border: white 2px solid;
+}
+
+#reviewStar{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#reviewStar img{
+  width: 35px;
+  height: 35px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.customerReviewStar{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.customerReviewStar img{
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  margin-left: 2px;
 }

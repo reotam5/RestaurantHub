@@ -24,6 +24,7 @@
   <!-- homemade css -->
   <link rel="stylesheet" href="styles/restaurant.css" />
   <link rel="stylesheet" href="styles/loading.css" />
+  <link rel="stylesheet" href="styles/mainPalette3.css" />
 
 </head>
 
@@ -210,18 +211,15 @@
 
         <div class="col-12 col-sm-12 col-md-12 restaurant-reviews">
           <span class="restaurant-section-title">Reviews:</span>
-          <p>sample review</p>
-          <p>sample review</p>
-          <p>sample review</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@getbootstrap">Submit a review</button>
+            data-whatever="@getbootstrap" style="margin-bottom: 10px;">Submit a review</button>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="restaurantReviewModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Your Review for [  ]:</h5>
+                  <h5 class="modal-title" id="restaurantReviewModal">Your Review for :</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -229,17 +227,22 @@
                 <div class="modal-body">
                   <form>
                     <div class="form-group">
-                      add star js here
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Content:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                      <Span>Stars:</Span>
+                      <div id="reviewStar">
+                        <img class="rStar" id="rStar1" src="images/star.png">
+                        <img class="rStar" id="rStar2" src="images/star.png">
+                        <img class="rStar" id="rStar3" src="images/star.png">
+                        <img class="rStar" id="rStar4" src="images/star.png">
+                        <img class="rStar" id="rStar5" src="images/star.png">
+                      </div>
+                      <label for="review-text" class="col-form-label">Content:</label>
+                      <textarea class="form-control" id="review-text"></textarea>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary">Submit</button>
+                  <button id="submitReview" type="button" data-dismiss="modal" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </div>
@@ -270,14 +273,8 @@
       <form id="reservation" action="">
         <div class="row">
           <div class="col-sm-3 reserve-date-div">
-            Date:
-            <input type="date" id="datepickerf">
-          </div>
-          <div class="col-sm-3 reserve-time-div">
-            Time:
-            <input type="time" id="reserve-time">
-
-
+            Choose time:
+            <input type="datetime-local" id="datepickerf">
           </div>
         </div>
         <div class="reserve-submit-div">
