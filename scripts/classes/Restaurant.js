@@ -109,6 +109,7 @@ class Restaurant{
     $(".restaurant-safety-protocols").empty().append(mask_req);
     $(".restaurant-safety-protocols").append(table_space);
     $(".restaurant-safety-protocols").append(max_cust);
+    $(".restaurant-safety-protocols").prepend('<span class="restaurant-section-title">Safety Protocols:</span>');
     //hours
     $(".days.mon").find(".hours").html(hours["Mon"]);
     $(".days.tue").find(".hours").html(hours["Tue"]);
