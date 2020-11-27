@@ -4,7 +4,7 @@ var urlParams = new URLSearchParams(window.location.search);
 //if url has parameter url=, it will redirect to that page after logged in.
 var targetUrl = urlParams.get("url");
 if(targetUrl == null){
-  targetUrl = "main.html";
+  targetUrl = "index.html";
 }
 
 var uiConfig = {
