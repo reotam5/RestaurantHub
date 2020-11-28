@@ -23,7 +23,6 @@ body{
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  filter: invert(1);
   border: gray 2px solid;
   transform: translateY(-50%);
   background-color: black;
