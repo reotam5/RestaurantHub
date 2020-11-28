@@ -65,10 +65,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       $("#editing-name").val(currentName);
       $("#editing-name").focus();
       $("#editing-name").on("blur keypress",function(event){
-        if($("#editing-name").val().length < 2){
-          alert("name length has to be bigger than 1");
-          return;
-        }
+
         //enter or on blur(opposite of focus in jquery event)
         if((event.which == 13 || event.which == 0)){
           var newName = $("#editing-name").val();
