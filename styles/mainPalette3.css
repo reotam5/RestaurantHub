@@ -12,10 +12,8 @@ body{
 }
 
 .restaurant-panel:hover{
-    position: relative;
     border: 4px solid #26b86f;
     border-radius: 8px;
-
 }
 .siteHead{
     background-color: #26b86f;
