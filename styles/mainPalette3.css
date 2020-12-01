@@ -6,6 +6,7 @@ body{
 }
 
 .restaurant-panel{
+    z-index: -1;
     background-color: #F9FAF0;
     border-radius: 8px;
     /*box-shadow: 0 0 20px #9ecaed; */
