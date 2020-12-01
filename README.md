@@ -20,6 +20,10 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap 
 * jQuery
+
+## Resources
+Logos are from <a href="https://icooon-mono.com/?lang=en">Icooon Mono</a>
+Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a>
 	
 ## Content
 Content of the project folder:
@@ -31,11 +35,12 @@ Content of the project folder:
 ├── favorite.html            # page for displaying list of favorited restaurnts.(require logged in)
 ├── profile.html             # page for user profile
 ├── restaurant.html          # page for restaurant information (restaurant.html?req=REST_ID displays information about restaurnt with id REST_ID)
-├── universalTemplate.html   # page for shared work. (ex. header, slidebar...)
-├── restaurntOwner.html      # A temporary page for debugging purpose. It allows adding a restaurnt in firebase.
 ├── login.html               # Log in page.(only email login supproted)
-├── loading.html             # loading screen template
 ├── maptest.html             # an ongoing developing page for map feature.
+├── template
+    /loading.html             # loading screen template
+    /restaurntOwner.html      # A temporary page for debugging purpose. It allows adding a restaurnt in firebase.
+    /universalTemplate.html   # page for shared work. (ex. header, slidebar...)
 └── README.md
 
 It has the following subfolders and files:
@@ -80,9 +85,6 @@ It has the following subfolders and files:
     /profile.css             # css for profile.html
     /restaurant.css          # css for restaurant.html
     /universal.css           # styles universal contents.  
-
-Firebase hosting files: 
-├── .firebaserc...
 
 
 ```
