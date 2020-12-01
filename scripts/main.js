@@ -1,20 +1,11 @@
-/******************************************/
-/* This is javascript for main.html */
-/******************************************/
+/*************************************/
+/* This is javascript for index.html */
+/*************************************/
 $(document).ready(function () {
-  // let listHours1 = "<p>Monday - 10:00AM - 10:00PM</p>" +
-  //   "<p>Tuesday - 10:00AM - 10:00PM</p>" +
-  //   "<p>Wednesday - Closed</p>" +
-  //   "<p>Thursday - 10:00AM - 10:00PM</p>" +
-  //   "<p>Friday - 10:00AM - 10:00PM</p>" +
-  //   "<p>Saturday - 10:00AM - 10:00PM</p>" +
-  //   "<p>Sunday - 12:00AM - 8:00PM</p>"
-  // let rest1 = ["keg", "/images/keg.jpg", true, true, false, listHours1]
-  // createPanel(rest1[0], rest1[1], rest1[2], rest1[3], rest1[4], rest1[5]);
-  // createPanel("joeys", rest1[1], rest1[2], rest1[3], rest1[4], rest1[5]);
 
   //get all restaurants
   db.collection("restaurants").get().then(function(queryDoc) {
+    //make div for each obtained restaurants
     queryDoc.forEach(function(doc) {
       makeBlock(doc);
     });
@@ -25,7 +16,7 @@ $(document).ready(function () {
     $("#keySearching").trigger("submit");
   });
 
-
+  //search button pressed
   $('#keySearching').submit(async function (e) {
     e.preventDefault();
     var query = db.collection("restaurants");
@@ -36,13 +27,14 @@ $(document).ready(function () {
 
         //N-Gram is a search algorithm.
         //tri-gram will separate name into list of words consisting of 3 letters.restaurant-panel
-        //restaurant becomes -> ["res","est","eta","tau","aur","ura","ran","ant","restaurant"].
+        //restaurant becomes -> ["res","est","sta","tau","aur","ura","ran","ant","restaurant"].
         var keywords = triGram(name);
         
         var keyMap = {};
         for(key in keywords){
           keyMap[keywords[key]] = true;
         }
+
         //upload keymap for searching next step
         await query.doc(doc.id).update("tokenMap",keyMap);
       });
@@ -51,11 +43,13 @@ $(document).ready(function () {
     //trigram of the search keyword
     var keywords = triGram(document.getElementById("restaurant_search").value);
 
+    //remove all restaurant divs so that it won't display twice.
     $(".restaurant-panel").remove();
 
     var restDocs = {};
+    
+    //empty keyword => display all restaurant
     if(keywords.length == 1 && keywords[0] == ""){
-      //empty keyword => display all restaurant
       var docQuery = await query.get();
       docQuery.forEach(doc =>{
         makeBlock(doc);
@@ -68,6 +62,7 @@ $(document).ready(function () {
         var docQuery = await targetQuery.get();
 
         docQuery.forEach(doc =>{
+          //make sure no over laps
           if(restDocs[doc.id] != "visited"){
             restDocs[doc.id] = "visited";
             makeBlock(doc);
@@ -85,6 +80,8 @@ $(document).ready(function () {
     //sort price low to high
     if($(".dropdown-menu > .active").hasClass("price-l-h")){
       var length = $(".restaurant-panel").length;
+      //store all restaurants' price information into this array
+      //so that i can sort by price
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
@@ -112,6 +109,8 @@ $(document).ready(function () {
     //sort restaurant price high to low
     }else if($(".dropdown-menu > .active").hasClass("price-h-l")){
       var length = $(".restaurant-panel").length;
+      //store all restaurants' price information into this array
+      //so that i can sort by price
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
@@ -140,6 +139,9 @@ $(document).ready(function () {
     //sort by rating
     }else if($(".dropdown-menu > .active").hasClass("rating")){
       var length = $(".restaurant-panel").length;
+      //store all restaurants' rating information into this array
+      //so that i can sort by rating
+      //rating is the average of all review
       var info = [];
       for(var i = 0; i < length; i++){
         var id = $($(".restaurant-panel")[i]).attr("id");
@@ -277,11 +279,11 @@ function triGram(word){
       arr.push(words[key].substring(i,i+set));
     }
   }
-  //output is [""]
+  //output is array
   return arr;
 }
 
-//display resutanrt list
+//display a restaurant div for given information
 function createPanel(id, name, img, reserve, tracker, verified, hours) {
   $("#no-matching").remove();
 

@@ -1,4 +1,6 @@
-
+/****************************************/
+/* This is javascript for favorite.html */
+/****************************************/
 $(document).ready(function(){
 
   //loading screen starts
@@ -25,12 +27,16 @@ $(document).ready(function(){
 });
 
 //this will display the favorite list by calling writeCode()
+//parameter "ref" is a customer reference to their collection (in order to search all favorite restaurant of specific user.)
 function refreshFavList(ref){
   var deffer = $.Deferred();
   $("#favorite-list").empty();
+  //takes customer ref as input and outputs their favorite restaurant refs
   getFavoriteRefs(ref).then(function(refList){
+    //takes restaurant refs as input and outputs json list of each reataurant information.
     getRestaurantsInfo(refList).then( async function(infoList){
       
+      //loop through all restaurants
       for(id in infoList){
         
         var restID = infoList[id]["REST_ID"];
@@ -74,6 +80,8 @@ function writeCode(id,url,name,image){
   })
 }
 
+//called when favorite deleted
+//parameter "id" is deleted restaurant id
 function deleteFavorite(id){
   db.collection("fav_restaurant").doc(id).delete();
   var user = firebase.auth().currentUser;

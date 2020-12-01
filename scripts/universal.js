@@ -1,4 +1,7 @@
-
+/******************************************/
+/*** All page should import this script.***/
+/* This script include header animations. */
+/******************************************/
 $(document).ready(function() {
 
   /****************************/

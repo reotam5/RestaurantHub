@@ -1,3 +1,6 @@
+/***********************************/
+/* This is javascript for map.html */
+/***********************************/
 $(document).ready(function() {
   getLocation();
 });

@@ -113,6 +113,7 @@ function toggleFav(custRef) {
       }
     });
 }
+
 //this is called initially when page is loaded
 //to check current favorite status
 function checkFav(custRef) {

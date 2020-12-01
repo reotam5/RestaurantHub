@@ -1,3 +1,7 @@
+/********************************************************/
+/* This is javascript for template/restaurantOwner.html */
+/********* Mostly made for debugging purpose. ***********/
+/********************************************************/
 //create JSON from the input forms and add in restaurnt collection
 $(document).ready(function(){
   

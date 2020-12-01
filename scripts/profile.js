@@ -1,3 +1,7 @@
+/***************************************/
+/* This is javascript for profile.html */
+/***************************************/
+
 //profile feature is only supported for logged in users
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
