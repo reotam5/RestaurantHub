@@ -117,7 +117,7 @@
     var lng;
     var lat;
 
-    window.onload = async function() {
+    window.onload = async function () {
       await getLocation();
     };
 
@@ -137,7 +137,7 @@
 
     function runMap(lng, lat) {
       mapboxgl.accessToken =
-      "pk.eyJ1Ijoia2V2aW5uaGE5NSIsImEiOiJja2hnbzV4dzcwb3BzMndvanlhZmpyZW55In0.Q2_WdnutfaDh6-i1NPWKJQ";
+        "pk.eyJ1Ijoia2V2aW5uaGE5NSIsImEiOiJja2hnbzV4dzcwb3BzMndvanlhZmpyZW55In0.Q2_WdnutfaDh6-i1NPWKJQ";
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location

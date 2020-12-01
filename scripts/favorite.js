@@ -76,7 +76,9 @@ function writeCode(id,url,name,image){
 
 function deleteFavorite(id){
   db.collection("fav_restaurant").doc(id).delete();
-  refreshFavList();
+  var user = firebase.auth().currentUser;
+  var custRef = db.collection("users").doc(user.uid);
+  refreshFavList(custRef);
 }
 
 //get references of favorite restaurants.restaurant-panel
