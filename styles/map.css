@@ -1,0 +1,7 @@
+#map {
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 70px;
+  /* width: 80%;
+  height: 600px; */
+}
