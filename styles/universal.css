@@ -201,6 +201,8 @@ div.openNav {
   padding-top: 65px !important;
   padding-bottom: 5px;
   width: 100%;
+
+  z-index: 3;
 }
 /**********************/
 /* slide bar css ends */
