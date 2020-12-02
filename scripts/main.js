@@ -183,7 +183,6 @@ $(document).ready(function () {
     //checks if restaurnt exists in the page, and if not, display "not found" message
     searchNoMatching();
   });
-
 });
 
 //this function prepares necessary information to display restuarnt list divs 
@@ -263,6 +262,11 @@ async function makeBlock(doc){
 
   //display block
   createPanel(restID, name, imgURL, reserve, tracker, verified, listHours);
+
+  $(".restaurant-panel").on("click", function() {
+    var id = $(this).attr("id");
+    window.location.href="restaurant.html?req=" + id;
+  });
 }
 
 //N-Gram is a search algorithm.
@@ -291,7 +295,6 @@ function createPanel(id, name, img, reserve, tracker, verified, hours) {
   let x = ".restaurant-panel-" + id;
   $(x + " .restaurant-image > img").attr("src", img).addClass("imgScale").attr("alt", "the-keg");
   $(x + " .restaurant-name").append(name);
-  $(x + " .restaurant-image").append($("<a href='restaurant.html?req="+id+"'></a>").css("display","block").css("height","100%").css("width","90%").css("position","relative").css("transform","translateY(-100%)"));
   if (reserve == true) {
     $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/calendar.png\"/>")
   }

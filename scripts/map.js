@@ -37,6 +37,7 @@ function positionError(error) {
 function runMap(lng, lat) {
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia2V2aW5uaGE5NSIsImEiOiJja2hnbzV4dzcwb3BzMndvanlhZmpyZW55In0.Q2_WdnutfaDh6-i1NPWKJQ";
+  
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
@@ -45,4 +46,12 @@ function runMap(lng, lat) {
   })
 
   var marker = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+
+  var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    minLength: 3
+  })
+
+  map.addControl(geocoder);
 }

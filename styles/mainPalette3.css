@@ -160,3 +160,7 @@ nav{
     transition: 0.5s;
     margin-bottom: 1em;
 }
+
+.restaurant-panel {
+    cursor: pointer;
+}
