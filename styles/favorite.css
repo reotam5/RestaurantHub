@@ -53,7 +53,7 @@
   border-radius: 8px;
 }
 .favorite-name{
-  font-size: 25pt;
+  font-size: 22pt;
   margin: 10px;
   font-weight: bold;
 }
@@ -63,12 +63,13 @@
   width: fit-content;
   height: fit-content;
   background-color: white;
-  width: fit-content;
   padding: 5px;
   border-radius: 10px;
   border: black 1px solid;
   color: black;
   z-index: 5;
+  position: absolute;
+  bottom: 0;
 }
 .favorite-reserve:hover{
   background-color: rgba(214, 214, 214, 0.63);
