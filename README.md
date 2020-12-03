@@ -22,8 +22,9 @@ Technologies used for this project:
 * jQuery
 
 ## Resources
-Logos are from <a href="https://icooon-mono.com/?lang=en">Icooon Mono</a>
-Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a>
+Logos are from <a href="https://icooon-mono.com/?lang=en">Icooon Mono</a><br/>
+Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a><br/>
+<a href="https://www.mapbox.com/">MapBox</a><br/>
 	
 ## Content
 Content of the project folder:
