@@ -134,7 +134,7 @@
       <div class="restaurantHeadRight col">
         <img tabindex="0" class="reserveIcon btn-outline-secondary" role="button" src="images/calendar.png"
           alt="something went wrong." data-toggle="popover" data-trigger="hover" title="Reservation"
-          data-content="This restaurant allowes online reservations.">
+          data-content="This restaurant allows online reservations.">
         <img tabindex="0" class="tableTracker btn-outline-secondary" role="button" src="images/tableTracker.png"
           alt="something went wrong." data-toggle="popover" data-trigger="hover" title="Table Tracker"
           data-content="This restaurant has real-time table tracker.">
@@ -211,12 +211,12 @@
 
         <div class="col-12 col-sm-12 col-md-12 restaurant-reviews">
           <span class="restaurant-section-title">Reviews:</span>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+          <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal"
             data-whatever="@getbootstrap" style="margin-bottom: 10px;">Submit a review</button>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="restaurantReviewModal"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="restaurantReviewModal">Your Review for :</h5>
@@ -241,8 +241,8 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button id="submitReview" type="button" data-dismiss="modal" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button id="submitReview" type="button" data-dismiss="modal" class="btn btn-success">Submit</button>
                 </div>
               </div>
             </div>
@@ -280,7 +280,7 @@
         <div class="reserve-submit-div">
 
 
-          <input type="button" class="btn btn-primary" id="reserve-submit" value="submit" />
+          <input type="button" class="btn btn-outline-success" id="reserve-submit" value="submit" />
         </div>
       </form>
 

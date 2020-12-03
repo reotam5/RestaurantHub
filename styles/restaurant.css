@@ -87,20 +87,20 @@ body{
   display: block;
 }
 .restaurant-bio{
-  background-color: aliceblue; 
+  background-color: #F9FAF0; 
   border: white 2px solid;
 }
 .restaurant-detail{
-  background-color: aliceblue; 
+  background-color: #F9FAF0; 
   border: white 2px solid;
 }
 .restaurant-reviews{
-  background-color: aliceblue; 
+  background-color: #F9FAF0; 
   border: white 2px solid;
 }
 .reserve-date-div{
   height: 100px;
-  background-color: aliceblue;
+  background-color: #F9FAF0;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ body{
 }
 .reserve-time-div{
   height: 100px;
-  background-color: aliceblue;
+  background-color: #F9FAF0;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -123,7 +123,7 @@ body{
 #reservation{
   height: 100%;
   width: 100%;
-  background-color: aliceblue;
+  background-color: #F9FAF0;
   font-weight: bold;
 }
 
@@ -150,11 +150,11 @@ body{
 }
 
 .restaurant-hours{
-  background-color: aliceblue;
+  background-color: #F9FAF0;
   border: white 2px solid;
 }
 .restaurant-safety-protocols{
-  background-color: aliceblue;
+  background-color: #F9FAF0;
   border: white 2px solid;
 }
 

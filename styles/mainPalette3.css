@@ -97,6 +97,7 @@ div.slidebar{
     .restaurant-image > img {
         width: 90%;
         height: 150px;
+        margin-top: 30px;
     }
 
     .restaurant-image {
@@ -118,8 +119,20 @@ div[class ^= "restaurant-panel"] {
     margin-bottom: 15px;
 }
 
+.restaurant-name {
+    font-size: 16pt;
+    margin-bottom: -1px;
+    font-weight: bold;
+
+}
+
+.restaurantStars{
+    display: none;
+}
+
 .restaurant-image {
     grid-column: 1;
+    padding-top: 1em;
 }
 
 .restaurant-details {
@@ -131,6 +144,7 @@ div[class ^= "restaurant-panel"] {
 .restaurant-icons {
     text-align: left;
     margin-right: 15%;
+    margin-left: -10px;
 }
 
 .hours {
