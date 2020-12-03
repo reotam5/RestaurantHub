@@ -116,45 +116,17 @@
         </div>
       </a>
     </div>
-  </div>---------->
+  </div>
+  <!-------------------->
   <!-- slide bar ends -->
   <!-------------------->
 
+  <!----------------------->
+  <!-- container for map -->
+  <!----------------------->
   <div id='map' style='width: 80%; height: 800px;'></div>
 
-  <!-- <script>
-    var lng;
-    var lat;
-
-    window.onload = async function () {
-      await getLocation();
-    };
-
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        console.log("error.")
-      }
-    }
-
-    function showPosition(position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      runMap(lng, lat);
-    }
-
-    function runMap(lng, lat) {
-      mapboxgl.accessToken =
-        "pk.eyJ1Ijoia2V2aW5uaGE5NSIsImEiOiJja2hnbzV4dzcwb3BzMndvanlhZmpyZW55In0.Q2_WdnutfaDh6-i1NPWKJQ";
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-        center: [lng, lat], // starting position [lng, lat]
-        zoom: 18 // starting zoom
-      });
-    }
-  </script> -->
+  
   <!------------------------------->
   <!---- loading screen starts ---->
   <!--include this only if needed-->

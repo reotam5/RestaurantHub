@@ -125,7 +125,7 @@ $(document).ready(function () {
         });
       }
 
-      //sort by rice range
+      //sort by price range
       info.sort(function(a,b){
         return b.price - a.price;
       });

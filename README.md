@@ -23,7 +23,8 @@ Technologies used for this project:
 
 ## Resources
 Logos are from <a href="https://icooon-mono.com/?lang=en">Icooon Mono</a>
-Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a>
+<!-- Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a> -->
+Restaurant images are from respective restaurant websites.
 	
 ## Content
 Content of the project folder:
