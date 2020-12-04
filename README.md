@@ -25,7 +25,8 @@ Technologies used for this project:
 Logos are from <a href="https://icooon-mono.com/?lang=en">Icooon Mono</a>
 <!-- Temporary restaurants' pictures are from <a href="unsplash.com">Unsplash</a> -->
 Restaurant images are from respective restaurant websites.
-	
+A Map API we used: <a href="https://www.mapbox.com/">MapBox</a><br/>
+
 ## Content
 Content of the project folder:
 
