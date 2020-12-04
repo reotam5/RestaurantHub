@@ -296,13 +296,13 @@ function createPanel(id, name, img, reserve, tracker, verified, hours) {
   $(x + " .restaurant-image > img").attr("src", img).addClass("imgScale").attr("alt", "the-keg");
   $(x + " .restaurant-name").append(name);
   if (reserve == true) {
-    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/calendar.png\"/>")
+    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/calendar.png\" alt='something went wrong.' data-toggle='popover' data-trigger='hover' title='Reservation'/>");
   }
   if (tracker == true) {
-    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/tableTracker.png\"/>")
+    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/tableTracker.png\" alt='something went wrong.' data-toggle='popover' data-trigger='hover' title='Table Tracker'/>")
   }
   if (verified == true) {
-    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/verifiedHours.png\"/>")
+    $(x + " .restaurant-details .restaurant-icons").append("<img class=\"icon\" src=\"images/verifiedHours.png\" alt='something went wrong.' data-toggle='popover' data-trigger='hover' title='Verified Hours'/>")
   }
   $(x + " .restaurant-details .hours").append(hours);
 }
